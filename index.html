@@ -322,7 +322,7 @@ footer{background:#04342C;padding:14px 20px;}
         <button class="wb" onclick="nextW()">&#8594;</button>
       </div>
       <div id="msg-fermeture-aout" style="display:none;background:#FFF8F5;border:2px solid #F4C9A8;border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:12px;color:#7B341E;">
-        🔒 <strong>Fermeture exceptionnelle :</strong> L'O'SPA Institut est fermé du <strong>samedi 15 août à partir de midi</strong> jusqu'au <strong>lundi 17 août au matin</strong>. Nous vous accueillons à nouveau le lundi 17 août.
+        🔒 <strong>Planning fermé jusqu'en mai 2027.</strong> L'O'SPA Institut est exceptionnellement ouvert pendant les fêtes de fin d'année. <strong>Attention :</strong> le <strong>24 décembre à partir de 13h</strong> et le <strong>25 décembre toute la journée</strong> restent fermés. Après les fêtes, le planning est de nouveau fermé jusqu'en mai 2027.
       </div>
       <div id="agenda-wrap"></div>
       <div class="ag-legend-perm">
@@ -1462,9 +1462,9 @@ function renderAgenda(){
   // Afficher le bandeau de fermeture si la semaine du 15 août est visible
   var msgF=document.getElementById('msg-fermeture-aout');
   if(msgF){
-    var d15=new Date(2026,7,15);
+     
     var weekStart=days[0], weekEnd=days[days.length-1];
-    msgF.style.display=(weekStart<=d15&&d15<=weekEnd)?'block':'none';
+    msgF.style.display='block';
   }
   var fr=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
   var mo=['jan','fév','mar','avr','mai','jun','jul','aoû','sep','oct','nov','déc'];
@@ -1563,9 +1563,25 @@ function renderAgenda(){
     return false;
   }
 
-  // Vérifier si la semaine a la moindre disponibilité pour ce soin
+      // ---- Règle de fermeture du planning ----
+    // Fermé jusqu'en mai 2027, sauf fêtes de fin d'année (19 déc 2026 – 5 jan 2027)
+    // Mais le 24 déc à partir de 13h et le 25 déc toute la journée restent fermés.
+    function planningOuvert(d, slotMin) {
+      var REOUVERTURE=new Date(2027,4,1); // 1er mai 2027
+      if(d>=REOUVERTURE)return true;
+      var fetesDebut=new Date(2026,11,19); // 19 déc 2026
+      var fetesFin=new Date(2027,0,5);    // 5 jan 2027
+      if(d>=fetesDebut&&d<=fetesFin){
+        if(d.getMonth()===11&&d.getDate()===25)return false; // 25 déc : fermé
+        if(d.getMonth()===11&&d.getDate()===24&&slotMin>=13*60)return false; // 24 déc après-midi
+        return true;
+      }
+      return false;
+    }
+// Vérifier si la semaine a la moindre disponibilité pour ce soin
   var hasAny=false;
   outer:for(var i=0;i<days.length;i++){
+    if(!planningOuvert(days[i],8*60))continue; // jour entier fermé ?
     var ds=dsf(days[i]);
     if(days[i]<TODAY)continue;
     if(!PLANNING[ds])continue;
@@ -1611,13 +1627,13 @@ function renderAgenda(){
       var d=days[i];
       var ds=dsf(d);
       var past=d<TODAY;
+            var slotMinCur=toMin(slot);
+      if(!planningOuvert(d,slotMinCur))past=true;
       h+='<div class="ag-daycell">';
       // Soin duo : réservable avec 1 ou 2 praticiennes (DSHP si 1 seule)
       if(isDuoSoin(selSoin)){
                 var duo_pids=[];
         if(PLANNING[ds]){
-          var allPids=[];
-          for(var ph in PLANNING[ds]){
             var phMin2=toMin(ph),slotMin2=toMin(slot);
             if(phMin2<=slotMin2&&slotMin2<phMin2+60){
               var arr3=PLANNING[ds][ph];
@@ -1748,7 +1764,7 @@ function renderAgenda(){
           // Restrictions DSHP selon planning Pascale
           // JS: 0=dim,1=lun,2=mar,3=mer,4=jeu,5=ven,6=sam
           var wd2=d.getDay(), slotMin2=toMin(slot);
-          var dshpOk = (!past && selSoin && selSoin.cat!=='Ostéopathie' && d<FERMETURE && isOuvert(d));
+          var dshpOk = (!past && selSoin && selSoin.cat!=='Ostéopathie' && planningOuvert(d,slotMin2) && isOuvert(d));
           if(wd2===0) dshpOk=false; // Dimanche : fermé
           if(wd2===3) dshpOk=false; // Mercredi : fermé
           if(wd2===1 && (slotMin2<10*60||slotMin2>=18*60)) dshpOk=false; // Lundi 10h-18h
