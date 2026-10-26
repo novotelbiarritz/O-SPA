@@ -266,7 +266,7 @@ footer{background:#04342C;padding:14px 20px;}
 
 <div style="background:#7C3AED;padding:16px;font-size:13.5px;color:#fff;font-weight:700;text-align:center;line-height:1.7;">
   🌿 L'Institut O'SPA est fermé jusqu'en mai 2027.<br>
-  <span style="font-size:12.5px;font-weight:400;">Nous restons ouverts pour les fêtes de Noël du <strong>19 décembre 2026 au 31 décembre 2026</strong>.</span><br>
+  <span style="font-size:12.5px;font-weight:400;">Nous restons ouverts pour les fêtes de Noël du <strong>26 octobre 2026 au 31 décembre 2026</strong>.</span><br>
   <span style="font-size:11.5px;opacity:.85;">Pour toute demande, contactez-nous directement · Joyeuses fêtes de fin d'année 🎄</span>
 </div>
 <div onclick="showTab('infos');setTimeout(function(){var el=document.getElementById('avis-section');if(el)el.scrollIntoView({behavior:'smooth'});},300);" style="background:#1D9E75;padding:14px 16px;font-size:14px;color:#fff;font-weight:700;text-align:center;cursor:pointer;">
@@ -1238,7 +1238,7 @@ var TODAY=new Date();
 var FERMETURE=new Date(2030,0,1); // Pas de fermeture prévue
 // Périodes d'ouverture exceptionnelles (hors planning) :
 // Fermé du 27/10/2026 au 18/12/2026, puis ouvert vacances Noël 19/12→03/01, puis fermé
-var NOEL_DEB=new Date(2026,11,19); // 19 décembre 2026
+var NOEL_DEB=new Date(2026,9,26); // 26 octobre 2026
 var NOEL_FIN=new Date(2027,0,3,23,59,59); // 31 décembre 2026
 var FERM_DEB=new Date(2026,9,27); // 27 octobre 2026
 function isOuvert(d){
@@ -1564,12 +1564,12 @@ function renderAgenda(){
   }
 
       // ---- Règle de fermeture du planning ----
-    // Fermé jusqu'en mai 2027, sauf fêtes de fin d'année (19 déc 2026 – 31 déc 2026)
+    // Fermé jusqu'en mai 2027, sauf fêtes de fin d'année (26 oct 2026 – 31 déc 2026)
     // Mais le 24 déc à partir de 13h et le 25 déc toute la journée restent fermés.
     function planningOuvert(d, slotMin) {
       var REOUVERTURE=new Date(2027,4,1); // 1er mai 2027
       if(d>=REOUVERTURE)return true;
-      var fetesDebut=new Date(2026,11,19); // 19 déc 2026
+      var fetesDebut=new Date(2026,9,26); // 26 oct 2026
       var fetesFin=new Date(2026,11,31);    // 31 déc 2026
       if(d>=fetesDebut&&d<=fetesFin){
         if(d.getMonth()===11&&d.getDate()===25)return false; // 25 déc : fermé
