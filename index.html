@@ -1649,7 +1649,6 @@ var phMin2=toMin(ph),slotMin2=toMin(slot);
           for(var pi=0;pi<allPids.length;pi++){
             if(pratCouvreSlot(ds,slot,durMin,allPids[pi])&&cabineLibre(ds,slot,allPids[pi]))duo_pids.push(allPids[pi]);
           }
-        }
         // DSHP duo : si aucune praticienne au planning, chercher dans les horaires d'ouverture
         var duoHors=false;
         if(!past&&duo_pids.length===0&&d.getDay()!==0){
@@ -1811,6 +1810,7 @@ var phMin2=toMin(ph),slotMin2=toMin(slot);
       h+='</div>';
     }
     h+='<\/div>';
+  }
   h+='<\/div>';
   el('agenda-wrap').innerHTML=h;
 }
