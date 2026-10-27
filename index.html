@@ -284,7 +284,7 @@ footer{background:#04342C;padding:14px 20px;}
 <div class="wrap">
   <div class="tabs">
     <button class="tab-btn on" id="tab-c" onclick="showTab('client')">🌿 Réserver</button>
-    <button class="tab-btn" id="tab-i" onclick="showTab('infos')">ℹ️ Infos utiles</button>
+    <button class="tab-btn" id="tab-i" onclick="showTab('infos')">ℹ️ Infos utiles</button><button class="tab-btn" id="tab-g" onclick="showTab('gift')" style="background:linear-gradient(135deg,#B91C1C,#DC2626);color:#fff;border:none;">🎁 Bon Cadeau</button>
   </div>
   <!-- onglet praticien caché -->
   <button id="tab-p" style="display:none"></button>
@@ -572,7 +572,7 @@ footer{background:#04342C;padding:14px 20px;}
 
   </div>
 
-  <!-- PRATICIEN -->
+  <!-- BON CADEAU NOËL -->  <div class="view" id="v-gift"><div style="text-align:center;padding:18px 12px 10px;"><div style="font-size:36px;margin-bottom:6px;">🎁</div><h2 style="font-size:19px;font-weight:800;color:#7C3AED;margin:0 0 6px;">Bon Cadeau O'SPA</h2><p style="font-size:13px;color:#555;margin:0 0 14px;line-height:1.5;">Offrez un moment de bien-être pour les fêtes de fin d'année.<br>Un bon cadeau aux <strong>parfums de Noël</strong> — le cadeau idéal pour vos proches.</p></div><div style="display:grid;gap:12px;padding:0 10px 14px;"><div style="background:linear-gradient(135deg,#7C3AED,#9D57F7);border-radius:14px;padding:16px;color:#fff;position:relative;overflow:hidden;"><div style="position:absolute;top:-10px;right:-10px;font-size:60px;opacity:.15;">🎄</div><div style="font-size:22px;margin-bottom:6px;">✨ Soin Signature — 55 min</div><div style="font-size:24px;font-weight:800;margin-bottom:4px;">75 €</div><div style="font-size:11.5px;opacity:.9;">Massage relaxant aux huiles essentielles de saison · Valable 6 mois</div></div><div style="background:linear-gradient(135deg,#B91C1C,#DC2626);border-radius:14px;padding:16px;color:#fff;position:relative;overflow:hidden;"><div style="position:absolute;top:-10px;right:-10px;font-size:60px;opacity:.15;">⭐</div><div style="font-size:22px;margin-bottom:6px;">🌿 Soin Duo — 55 min</div><div style="font-size:24px;font-weight:800;margin-bottom:4px;">140 €</div><div style="font-size:11.5px;opacity:.9;">Pour deux personnes — un moment de détente partagé · Valable 6 mois</div></div><div style="background:linear-gradient(135deg,#1D9E75,#059669);border-radius:14px;padding:16px;color:#fff;position:relative;overflow:hidden;"><div style="position:absolute;top:-10px;right:-10px;font-size:60px;opacity:.15;">🎁</div><div style="font-size:22px;margin-bottom:6px;">💎 Bon Cadeau Libre</div><div style="font-size:24px;font-weight:800;margin-bottom:4px;">Montant libre</div><div style="font-size:11.5px;opacity:.9;">À utiliser sur toute prestation de l'O'SPA Institut · Valable 6 mois</div></div></div><div style="background:#FFF8F5;border:2px solid #F4C9A8;border-radius:12px;margin:0 10px 14px;padding:14px;"><div style="font-size:13px;font-weight:700;color:#7B341E;margin-bottom:8px;">🛍️ Comment commander votre bon cadeau ?</div><div style="font-size:12px;color:#555;line-height:1.7;"><div>📞 <strong>Par téléphone :</strong> contactez directement notre institut</div><div>📧 <strong>Par e-mail :</strong> <a href="mailto:ospa@novotelbiarritz.com" style="color:#7C3AED;font-weight:600;">ospa@novotelbiarritz.com</a></div><div>🏨 <strong>Sur place :</strong> à l'accueil de l'O'SPA — Novotel Biarritz-Anglet</div><div style="margin-top:8px;font-size:11px;color:#888;font-style:italic;">Les bons cadeaux sont personnalisés et envoyés par e-mail ou remis en main propre sous enveloppe cadeau.</div></div></div><div style="text-align:center;padding:6px 16px 18px;font-size:11.5px;color:#888;line-height:1.6;">🎄 Commandez avant le <strong>20 décembre</strong> pour une livraison garantie avant Noël<br><span style="font-size:11px;">Fermé le 24 déc. après-midi et le 25 déc. toute la journée</span></div></div>  <!-- PRATICIEN -->
   <div class="view" id="v-praticien">
     <div class="ptabs" id="ptabs"></div>
     <div class="dcard">
@@ -1360,7 +1360,7 @@ function showTab(t){
   el('v-client').className='view'+(t==='client'?' on':'');
   el('v-infos').className='view'+(t==='infos'?' on':'');
   el('v-praticien').className='view'+(t==='praticien'?' on':'');
-  if(t==='praticien'){renderPTabs();renderRdvs();}
+  if(el('tab-g'))el('tab-g').className='tab-btn'+(t==='gift'?' on':'');if(el('v-gift'))el('v-gift').className='view'+(t==='gift'?' on':'');if(t==='praticien'){renderPTabs();renderRdvs();}
   if(t==='infos'){renderInfosPratList();renderMesReservations();}
 }
 
