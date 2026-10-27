@@ -1632,9 +1632,10 @@ function renderAgenda(){
       h+='<div class="ag-daycell">';
       // Soin duo : réservable avec 1 ou 2 praticiennes (DSHP si 1 seule)
       if(isDuoSoin(selSoin)){
-                var duo_pids=[];
+                var duo_pids=[];var allPids=[];var allPids=[];
         if(PLANNING[ds]){
-            var phMin2=toMin(ph),slotMin2=toMin(slot);
+            for(var ph in PLANNING[ds]){
+var phMin2=toMin(ph),slotMin2=toMin(slot);
             if(phMin2<=slotMin2&&slotMin2<phMin2+60){
               var arr3=PLANNING[ds][ph];
               if(!Array.isArray(arr3))arr3=arr3?[arr3]:[];
@@ -1643,6 +1644,7 @@ function renderAgenda(){
                 if(pp3&&pp3.active!==false&&pp3.type!=='osteo'&&allPids.indexOf(arr3[ai3])<0)allPids.push(arr3[ai3]);
               }
             }
+          }
           }
           for(var pi=0;pi<allPids.length;pi++){
             if(pratCouvreSlot(ds,slot,durMin,allPids[pi])&&cabineLibre(ds,slot,allPids[pi]))duo_pids.push(allPids[pi]);
