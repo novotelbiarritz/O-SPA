@@ -572,7 +572,311 @@ footer{background:#04342C;padding:14px 20px;}
 
   </div>
 
-  <!-- BON CADEAU NOËL -->  <div class="view" id="v-gift"><div style="text-align:center;padding:18px 12px 10px;"><div style="font-size:36px;margin-bottom:6px;">🎁</div><h2 style="font-size:19px;font-weight:800;color:#7C3AED;margin:0 0 6px;">Bon Cadeau O'SPA</h2><p style="font-size:13px;color:#555;margin:0 0 14px;line-height:1.5;">Offrez un moment de bien-être pour les fêtes de fin d'année.<br>Un bon cadeau aux <strong>parfums de Noël</strong> — le cadeau idéal pour vos proches.</p></div><div style="display:grid;gap:12px;padding:0 10px 14px;"><div style="background:linear-gradient(135deg,#7C3AED,#9D57F7);border-radius:14px;padding:16px;color:#fff;position:relative;overflow:hidden;"><div style="position:absolute;top:-10px;right:-10px;font-size:60px;opacity:.15;">🎄</div><div style="font-size:22px;margin-bottom:6px;">✨ Soin Signature — 55 min</div><div style="font-size:24px;font-weight:800;margin-bottom:4px;">75 €</div><div style="font-size:11.5px;opacity:.9;">Massage relaxant aux huiles essentielles de saison · Valable 6 mois</div></div><div style="background:linear-gradient(135deg,#B91C1C,#DC2626);border-radius:14px;padding:16px;color:#fff;position:relative;overflow:hidden;"><div style="position:absolute;top:-10px;right:-10px;font-size:60px;opacity:.15;">⭐</div><div style="font-size:22px;margin-bottom:6px;">🌿 Soin Duo — 55 min</div><div style="font-size:24px;font-weight:800;margin-bottom:4px;">140 €</div><div style="font-size:11.5px;opacity:.9;">Pour deux personnes — un moment de détente partagé · Valable 6 mois</div></div><div style="background:linear-gradient(135deg,#1D9E75,#059669);border-radius:14px;padding:16px;color:#fff;position:relative;overflow:hidden;"><div style="position:absolute;top:-10px;right:-10px;font-size:60px;opacity:.15;">🎁</div><div style="font-size:22px;margin-bottom:6px;">💎 Bon Cadeau Libre</div><div style="font-size:24px;font-weight:800;margin-bottom:4px;">Montant libre</div><div style="font-size:11.5px;opacity:.9;">À utiliser sur toute prestation de l'O'SPA Institut · Valable 6 mois</div></div></div><div style="background:#FFF8F5;border:2px solid #F4C9A8;border-radius:12px;margin:0 10px 14px;padding:14px;"><div style="font-size:13px;font-weight:700;color:#7B341E;margin-bottom:8px;">🛍️ Comment commander votre bon cadeau ?</div><div style="font-size:12px;color:#555;line-height:1.7;"><div>📞 <strong>Par téléphone :</strong> appeler la praticienne Pascale au <a href="tel:0672174995" style="color:#7C3AED;font-weight:600;">06 72 17 49 95</a></div><div>📧 <strong>Par e-mail :</strong> <a href="mailto:pascale.fitnesscoach@free.fr" style="color:#7C3AED;font-weight:600;">pascale.fitnesscoach@free.fr</a></div><div>🏨 <strong>Sur place :</strong> à l'accueil de l'O'SPA — Novotel Biarritz-Anglet</div><div style="margin-top:8px;font-size:11px;color:#888;font-style:italic;">Les bons cadeaux sont personnalisés et envoyés par e-mail ou remis en main propre sous enveloppe cadeau.</div></div></div><div style="text-align:center;padding:6px 16px 18px;font-size:11.5px;color:#888;line-height:1.6;">🎄 Commandez avant le <strong>20 décembre</strong> pour une livraison garantie avant Noël<br><span style="font-size:11px;">Fermé le 24 déc. après-midi et le 25 déc. toute la journée</span></div></div>  <!-- PRATICIEN -->
+  <!-- BON CADEAU NOËL 2026 — O'SPA Institut -->
+<div class="view" id="v-gift">
+
+<style>
+/* ── BON CADEAU FÊTES — styles spécifiques ── */
+.gift-header{background:linear-gradient(180deg,#0D2E1A 0%,#1A4A2A 100%);border-radius:0 0 22px 22px;text-align:center;padding:20px 16px 15px;position:relative;overflow:hidden;}
+.gift-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,162,39,.18) 0%,transparent 70%);}
+.gift-garland{font-size:15px;letter-spacing:5px;margin-bottom:5px;opacity:.9;color:#ffd700;position:relative;z-index:2;}
+.gift-santa{font-size:58px;line-height:1;margin:5px 0;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3));position:relative;z-index:2;}
+.gift-title{font-family:'Playfair Display',Georgia,serif;font-size:19px;font-weight:900;color:#C9A227;text-shadow:0 2px 10px rgba(0,0,0,.5);margin:6px 0 5px;position:relative;z-index:2;}
+.gift-subtitle{font-size:12px;color:#d4f0d4;line-height:1.6;margin-bottom:10px;position:relative;z-index:2;}
+.gift-icons{font-size:13px;letter-spacing:5px;position:relative;z-index:2;}
+/* ── ANIMATIONS NEIGE + TRAÎNEAU ── */
+.gc-anim-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+.gc-snow{position:absolute;top:-10px;border-radius:50%;background:rgba(255,255,255,.85);animation:gcFall linear infinite;}
+@keyframes gcFall{0%{transform:translateY(0) translateX(0) rotate(0);opacity:1;}100%{transform:translateY(180px) translateX(15px) rotate(360deg);opacity:0;}}
+.gc-sleigh{position:absolute;top:22px;font-size:26px;white-space:nowrap;animation:gcSleigh 9s linear infinite;filter:drop-shadow(0 3px 8px rgba(0,0,0,.4));z-index:3;}
+.gc-sleigh2{top:50px;font-size:19px;animation-delay:4.5s!important;}
+@keyframes gcSleigh{0%{left:-200px;opacity:0;}6%{opacity:1;}88%{opacity:1;}100%{left:calc(100% + 60px);opacity:0;}}
+/* ── CARTES ── */
+.gc-grid{display:grid;gap:11px;padding:13px 0;}
+.gc-card{border-radius:15px;padding:14px;color:#fff;position:relative;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;-webkit-tap-highlight-color:transparent;}
+.gc-card:active{transform:scale(.98);}
+.gc-deco-t{position:absolute;top:-10px;right:-10px;font-size:72px;opacity:.09;line-height:1;pointer-events:none;}
+.gc-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;opacity:.8;margin-bottom:4px;}
+.gc-name{font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:700;margin-bottom:5px;line-height:1.3;}
+.gc-desc{font-size:11px;opacity:.88;line-height:1.6;margin-bottom:9px;}
+.gc-footer{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;}
+.gc-price{font-size:27px;font-weight:900;letter-spacing:-1px;line-height:1;}
+.gc-meta{font-size:10px;opacity:.75;text-align:right;line-height:1.5;}
+.gc-btn{background:rgba(255,255,255,.22);border:1.5px solid rgba(255,255,255,.4);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:18px;cursor:pointer;white-space:nowrap;transition:background .15s;}
+.gc-btn:hover{background:rgba(255,255,255,.32);}
+.gc-noel{background:linear-gradient(135deg,#7B1C1C,#B91C1C 60%,#DC2626);box-shadow:0 5px 18px rgba(185,28,28,.3);}
+.gc-rev{background:linear-gradient(135deg,#1A3A5C,#1e40af 60%,#3B82F6);box-shadow:0 5px 18px rgba(30,64,175,.3);}
+.gc-detox{background:linear-gradient(135deg,#064E3B,#047857 60%,#10B981);box-shadow:0 5px 18px rgba(4,120,87,.3);}
+.gc-duo{background:linear-gradient(135deg,#78350F,#92400E 50%,#B45309);box-shadow:0 5px 18px rgba(120,53,15,.35);}
+/* ── INFO + FOOTER ── */
+.gc-info-block{background:#FFF8F5;border:2px solid #F4C9A8;border-radius:13px;padding:13px;margin-bottom:13px;}
+.gc-info-title{font-size:13px;font-weight:700;color:#7B341E;margin-bottom:7px;}
+.gc-info-lines{font-size:12px;color:#555;line-height:1.9;}
+.gc-info-lines a{color:#7C3AED;font-weight:600;text-decoration:none;}
+.gc-footer-note{text-align:center;padding:4px 16px 20px;font-size:11px;color:#999;line-height:1.7;}
+/* ── MODAL ── */
+.gc-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;align-items:flex-end;justify-content:center;}
+.gc-overlay.open{display:flex;}
+.gc-sheet{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:480px;max-height:93vh;overflow-y:auto;padding-bottom:env(safe-area-inset-bottom,12px);animation:gcSlideUp .25s ease-out;}
+@keyframes gcSlideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.gc-handle{width:38px;height:4px;background:#e0d7ff;border-radius:2px;margin:11px auto 0;}
+.gc-mheader{padding:12px 16px 10px;border-bottom:1px solid #ede9fe;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.gc-mheader-t{font-weight:800;font-size:15px;color:#1a1a2e;line-height:1.3;}
+.gc-mheader-s{font-size:11px;color:#888;margin-top:2px;}
+.gc-mclose{background:#ede9fe;border:none;border-radius:50%;width:28px;height:28px;font-size:14px;cursor:pointer;color:#7C3AED;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.gc-mbody{padding:14px;display:flex;flex-direction:column;gap:11px;}
+.gc-recap{background:#F5F3FF;border:1.5px solid #DDD6FE;border-radius:11px;padding:10px 13px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.gc-recap-soin{font-size:13px;font-weight:600;color:#1a1a2e;line-height:1.4;}
+.gc-recap-soin small{display:block;font-size:11px;color:#777;font-weight:400;}
+.gc-recap-price{font-size:22px;font-weight:900;color:#7C3AED;white-space:nowrap;}
+.gc-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.gc-field{display:flex;flex-direction:column;gap:4px;}
+.gc-field label{font-size:11px;font-weight:600;color:#777;}
+.gc-field input,.gc-field textarea{background:#f8f5ff;border:1.5px solid #DDD6FE;border-radius:9px;padding:8px 10px;font-size:13px;color:#1a1a2e;font-family:inherit;outline:none;transition:border-color .15s;}
+.gc-field input:focus,.gc-field textarea:focus{border-color:#7C3AED;}
+.gc-field textarea{resize:none;min-height:60px;}
+.gc-pay-lbl{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:1.5px;}
+.gc-pay-opts{display:flex;flex-direction:column;gap:7px;}
+.gc-pay-opt{display:flex;align-items:flex-start;gap:10px;border:2px solid #DDD6FE;border-radius:11px;padding:10px 11px;cursor:pointer;transition:border-color .15s,background .15s;}
+.gc-pay-opt:has(input:checked){border-color:#7C3AED;background:#F5F3FF;}
+.gc-pay-opt input[type=radio]{accent-color:#7C3AED;margin-top:2px;flex-shrink:0;}
+.gc-pay-opt-t{font-size:13px;font-weight:700;color:#1a1a2e;}
+.gc-pay-opt-d{font-size:11px;color:#777;line-height:1.5;margin-top:2px;}
+.gc-rgpd{font-size:10px;color:#aaa;text-align:center;line-height:1.6;}
+.gc-submit{background:#7C3AED;color:#fff;border:none;border-radius:12px;padding:13px 20px;font-size:14px;font-weight:700;cursor:pointer;width:100%;transition:opacity .15s;}
+.gc-submit:hover{opacity:.9;}.gc-submit:disabled{opacity:.5;cursor:default;}
+.gc-confirm{display:none;flex-direction:column;align-items:center;text-align:center;padding:28px 20px;gap:10px;}
+.gc-confirm.show{display:flex;}
+.gc-confirm-title{font-family:'Playfair Display',Georgia,serif;font-size:19px;font-weight:900;color:#059669;}
+.gc-confirm-text{font-size:12px;color:#666;line-height:1.7;}
+.gc-confirm-recap{background:#F5F3FF;border:1.5px solid #DDD6FE;border-radius:11px;padding:10px 14px;width:100%;text-align:left;font-size:12px;color:#1a1a2e;line-height:1.9;}
+.gc-confirm-close{background:#7C3AED;color:#fff;border:none;border-radius:12px;padding:11px 28px;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px;}
+</style>
+
+<div class="gift-header">
+  <div class="gc-anim-wrap" id="gc-anim-wrap">
+    <div class="gc-snow" style="left:4%;width:5px;height:5px;animation-duration:3.2s;animation-delay:0s;"></div>
+    <div class="gc-snow" style="left:12%;width:3px;height:3px;animation-duration:4.1s;animation-delay:.7s;"></div>
+    <div class="gc-snow" style="left:23%;width:6px;height:6px;animation-duration:3.8s;animation-delay:1.2s;"></div>
+    <div class="gc-snow" style="left:34%;width:4px;height:4px;animation-duration:2.9s;animation-delay:.3s;"></div>
+    <div class="gc-snow" style="left:44%;width:3px;height:3px;animation-duration:4.5s;animation-delay:1.8s;"></div>
+    <div class="gc-snow" style="left:54%;width:5px;height:5px;animation-duration:3.3s;animation-delay:.9s;"></div>
+    <div class="gc-snow" style="left:65%;width:4px;height:4px;animation-duration:4.2s;animation-delay:.4s;"></div>
+    <div class="gc-snow" style="left:74%;width:3px;height:3px;animation-duration:3.7s;animation-delay:1.5s;"></div>
+    <div class="gc-snow" style="left:84%;width:6px;height:6px;animation-duration:3.0s;animation-delay:.6s;"></div>
+    <div class="gc-snow" style="left:93%;width:4px;height:4px;animation-duration:4.4s;animation-delay:2.1s;"></div>
+    <div class="gc-snow" style="left:8%;width:4px;height:4px;animation-duration:3.6s;animation-delay:2.5s;"></div>
+    <div class="gc-snow" style="left:58%;width:3px;height:3px;animation-duration:4.8s;animation-delay:3.2s;"></div>
+    <div class="gc-snow" style="left:78%;width:5px;height:5px;animation-duration:3.4s;animation-delay:1.9s;"></div>
+    <div class="gc-sleigh" style="animation-delay:0.5s;">🦌🦌🦌🎅🛷</div>
+    <div class="gc-sleigh gc-sleigh2" style="animation-delay:5s;">🦌🦌🎅🛷</div>
+  </div>
+  <div class="gift-garland">✨🎄✨🎄✨🎄✨</div>
+  <span class="gift-santa">🎅</span>
+  <h2 class="gift-title">Bons Cadeaux Fêtes 2026</h2>
+  <p class="gift-subtitle">Offrez un soin inoubliable pour les fêtes de fin d'année.<br>🥂 Le cadeau parfait pour vos proches !</p>
+  <div class="gift-icons">🎁 ⭐ 🎄 ⭐ 🎁</div>
+</div>
+
+<div class="gc-grid">
+
+  <div class="gc-card gc-noel" onclick="gcOpen('Le Rituel des Fêtes','Massage sur mesure 60 min aux huiles de saison','90 €','60 min')">
+    <div class="gc-deco-t">🎄</div>
+    <div class="gc-tag">⭐ Soin Signature</div>
+    <div class="gc-name">🎄 Le Rituel des Fêtes</div>
+    <div class="gc-desc">Massage sur mesure 60 min aux huiles essentielles de saison — cèdre, cannelle, orange douce. Une parenthèse de douceur au cœur de l'hiver.</div>
+    <div class="gc-footer">
+      <div><div class="gc-price">90 €</div><div class="gc-meta">60 min · Valable 6 mois</div></div>
+      <button class="gc-btn" onclick="event.stopPropagation();gcOpen('Le Rituel des Fêtes','Massage sur mesure 60 min aux huiles de saison','90 €','60 min')">🎁 Commander</button>
+    </div>
+  </div>
+
+  <div class="gc-card gc-rev" onclick="gcOpen('Entre Deux Fêtes','Massage express ressourçant 30 min','50 €','30 min')">
+    <div class="gc-deco-t">🥂</div>
+    <div class="gc-tag">🌙 Pause Ressourçante</div>
+    <div class="gc-name">🥂 Entre Deux Fêtes</div>
+    <div class="gc-desc">Entre Noël et le Réveillon, une pause express bien méritée. Massage 30 min pour recharger les batteries et repartir rayonnant·e.</div>
+    <div class="gc-footer">
+      <div><div class="gc-price">50 €</div><div class="gc-meta">30 min · Valable 6 mois</div></div>
+      <button class="gc-btn" onclick="event.stopPropagation();gcOpen('Entre Deux Fêtes','Massage express ressourçant 30 min','50 €','30 min')">🎁 Commander</button>
+    </div>
+  </div>
+
+  <div class="gc-card gc-detox" onclick="gcOpen('Détox Bonne Année','Massage ayurvédique Abhyanga 90 min','135 €','90 min')">
+    <div class="gc-deco-t">🌿</div>
+    <div class="gc-tag">💚 Soin Détox</div>
+    <div class="gc-name">🌿 Détox Bonne Année</div>
+    <div class="gc-desc">Après les excès des fêtes, un grand soin régénérant. Massage ayurvédique Abhyanga — drainage, huiles purifiantes, pleine détente.</div>
+    <div class="gc-footer">
+      <div><div class="gc-price">135 €</div><div class="gc-meta">90 min · Valable 6 mois</div></div>
+      <button class="gc-btn" onclick="event.stopPropagation();gcOpen('Détox Bonne Année','Massage ayurvédique Abhyanga 90 min','135 €','90 min')">🎁 Commander</button>
+    </div>
+  </div>
+
+  <div class="gc-card gc-duo" onclick="gcOpen('L\'Escapade en Duo','Massage sur mesure 60 min × 2 personnes','170 €','60 min × 2')">
+    <div class="gc-deco-t">💑</div>
+    <div class="gc-tag">✨ Expérience Partagée</div>
+    <div class="gc-name">💑 L'Escapade en Duo</div>
+    <div class="gc-desc">Partagez un moment unique à deux — chacun bénéficie d'un massage sur mesure 60 min. Idéal pour célébrer les fêtes ensemble.</div>
+    <div class="gc-footer">
+      <div><div class="gc-price">170 €</div><div class="gc-meta">60 min × 2 · Valable 6 mois</div></div>
+      <button class="gc-btn" onclick="event.stopPropagation();gcOpen('L\'Escapade en Duo','Massage sur mesure 60 min × 2 personnes','170 €','60 min × 2')">🎁 Commander</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="gc-info-block">
+  <div class="gc-info-title">🛍️ Comment commander votre bon cadeau ?</div>
+  <div class="gc-info-lines">
+    <div>▸ Cliquez sur <strong>🎁 Commander</strong> sur le soin de votre choix</div>
+    <div>▸ Renseignez vos coordonnées et choisissez votre mode de paiement</div>
+    <div>▸ Pascale vous contacte pour finaliser le règlement (sur place ou par téléphone)</div>
+    <div>▸ <strong>Votre bon cadeau arrive automatiquement par e-mail</strong> dès le paiement confirmé</div>
+    <div>▸ <strong>La personne qui reçoit le bon : appelez Pascale</strong> au 06 72 17 49 95 pour planifier votre soin</div>
+    <div style="margin-top:5px;">📞 <a href="tel:0672174995">06 72 17 49 95</a> · 📧 <a href="mailto:pascale.fitnesscoach@free.fr">pascale.fitnesscoach@free.fr</a></div>
+  </div>
+</div>
+
+<div class="gc-footer-note">
+  🎄 Commandez avant le <strong>20 décembre</strong> pour une livraison garantie avant Noël<br>
+  Bon cadeau dématérialisé · Code unique · Valable 6 mois · Réservation par téléphone obligatoire
+</div>
+
+<!-- MODAL COMMANDE -->
+<div class="gc-overlay" id="gc-modal" onclick="if(event.target===this)gcClose()">
+  <div class="gc-sheet">
+    <div class="gc-handle"></div>
+    <div id="gc-form-panel">
+      <div class="gc-mheader">
+        <div>
+          <div class="gc-mheader-t" id="gc-modal-title">🎁 Commander un bon cadeau</div>
+          <div class="gc-mheader-s">Bon envoyé par e-mail dès paiement confirmé · Valable 6 mois</div>
+        </div>
+        <button class="gc-mclose" onclick="gcClose()">✕</button>
+      </div>
+      <div class="gc-mbody">
+        <div class="gc-recap">
+          <div class="gc-recap-soin"><span id="gc-recap-nom">—</span><small id="gc-recap-detail">—</small></div>
+          <div class="gc-recap-price" id="gc-recap-price">—</div>
+        </div>
+        <div class="gc-row">
+          <div class="gc-field"><label>Prénom *</label><input type="text" id="gc-prenom" placeholder="Marie" autocomplete="given-name"></div>
+          <div class="gc-field"><label>Nom *</label><input type="text" id="gc-nom" placeholder="Dupont" autocomplete="family-name"></div>
+        </div>
+        <div class="gc-field">
+          <label>E-mail * — votre bon cadeau vous sera envoyé ici</label>
+          <input type="email" id="gc-email" placeholder="marie.dupont@exemple.fr" autocomplete="email">
+        </div>
+        <div class="gc-field">
+          <label>Téléphone * — pour confirmer le paiement</label>
+          <input type="tel" id="gc-tel" placeholder="06 00 00 00 00" autocomplete="tel">
+        </div>
+        <div class="gc-field">
+          <label>Ce bon cadeau est destiné à… (facultatif)</label>
+          <input type="text" id="gc-dest" placeholder="ex. Sophie, Maman, Jean-Pierre…">
+        </div>
+        <div class="gc-field">
+          <label>Message personnel (facultatif)</label>
+          <textarea id="gc-msg" placeholder="ex. Joyeux Noël ! Profite bien de ce moment de détente…"></textarea>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <div class="gc-pay-lbl">Mode de paiement</div>
+          <div class="gc-pay-opts">
+            <label class="gc-pay-opt">
+              <input type="radio" name="gc-pay" value="wero" checked>
+              <div style="font-size:19px;flex-shrink:0;margin-top:1px;">💜</div>
+              <div><div class="gc-pay-opt-t">Wero</div><div class="gc-pay-opt-d">Pascale vous envoie une demande de paiement Wero sur votre téléphone.</div></div>
+            </label>
+            <label class="gc-pay-opt">
+              <input type="radio" name="gc-pay" value="cb-tel">
+              <div style="font-size:19px;flex-shrink:0;margin-top:1px;">💳</div>
+              <div><div class="gc-pay-opt-t">Carte bancaire par téléphone</div><div class="gc-pay-opt-d">Pascale vous rappelle. Vos données bancaires ne transitent jamais en ligne.</div></div>
+            </label>
+          </div>
+        </div>
+        <div class="gc-rgpd">🔒 Données utilisées uniquement pour traiter votre commande. Aucune donnée bancaire saisie en ligne. Votre bon cadeau est envoyé automatiquement par e-mail dès confirmation du paiement par Pascale. La bénéficiaire devra appeler Pascale au 06 72 17 49 95 pour planifier le soin.</div>
+        <button class="gc-submit" id="gc-submit-btn" onclick="gcSubmit()">Valider ma commande 🎁</button>
+      </div>
+    </div>
+    <div class="gc-confirm" id="gc-confirm">
+      <div style="font-size:58px;">✅</div>
+      <div class="gc-confirm-title">Commande enregistrée !</div>
+      <div class="gc-confirm-text">Pascale vous contacte pour finaliser le paiement<br>(sur place à l'institut ou par téléphone au 06 72 17 49 95).<br>Votre <strong>bon cadeau arrive par e-mail</strong> dès confirmation du règlement.<br><br>📞 <strong>La personne qui reçoit le bon cadeau doit appeler Pascale</strong><br>pour planifier son soin au 06 72 17 49 95.</div>
+      <div class="gc-confirm-recap" id="gc-confirm-recap"></div>
+      <div style="font-size:11px;color:#aaa;text-align:center;line-height:1.8;">📞 <strong>06 72 17 49 95</strong> · 📧 <strong>pascale.fitnesscoach@free.fr</strong></div>
+      <button class="gc-confirm-close" onclick="gcClose()">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var _cur={};
+  window.gcOpen=function(nom,detail,prix,duree){
+    _cur={nom:nom,detail:detail,prix:prix,duree:duree};
+    document.getElementById('gc-modal-title').textContent='🎁 '+nom;
+    document.getElementById('gc-recap-nom').textContent=nom;
+    document.getElementById('gc-recap-detail').textContent=detail;
+    document.getElementById('gc-recap-price').textContent=prix;
+    document.getElementById('gc-form-panel').style.display='';
+    var c=document.getElementById('gc-confirm');c.className='gc-confirm';
+    document.getElementById('gc-modal').classList.add('open');
+    document.body.style.overflow='hidden';
+  };
+  window.gcClose=function(){
+    document.getElementById('gc-modal').classList.remove('open');
+    document.body.style.overflow='';
+    ['gc-prenom','gc-nom','gc-email','gc-tel','gc-dest','gc-msg'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+    var r=document.querySelector('input[name="gc-pay"][value="wero"]');if(r)r.checked=true;
+    var b=document.getElementById('gc-submit-btn');if(b){b.disabled=false;b.textContent='Valider ma commande 🎁';}
+  };
+  window.gcSubmit=function(){
+    var p=document.getElementById('gc-prenom').value.trim();
+    var n=document.getElementById('gc-nom').value.trim();
+    var e=document.getElementById('gc-email').value.trim();
+    var t=document.getElementById('gc-tel').value.trim();
+    if(!p||!n||!e||!t){alert('Merci de renseigner les champs obligatoires (Prénom, Nom, E-mail, Téléphone).');return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){alert('Adresse e-mail invalide.');return;}
+    var payEl=document.querySelector('input[name="gc-pay"]:checked');
+    var pay=payEl?payEl.value:'wero';
+    var dest=document.getElementById('gc-dest').value.trim();
+    var msg=document.getElementById('gc-msg').value.trim();
+    var b=document.getElementById('gc-submit-btn');
+    b.disabled=true;b.textContent='Envoi en cours…';
+    try{
+      if(typeof db!=='undefined'&&typeof firebase!=='undefined'){
+        var code='OSPA-'+Math.random().toString(36).substr(2,4).toUpperCase();
+        var now=new Date();var expiry=new Date(now);expiry.setMonth(expiry.getMonth()+6);
+        db.collection('BON_CADEAUX').add({
+          soin:_cur.nom,detail:_cur.detail,prix:_cur.prix,duree:_cur.duree,
+          prenom:p,nom:n,email:e,telephone:t,
+          destinataire:dest,message:msg,paiement:pay,
+          code:code,statut:'en_attente',
+          dateCommande:firebase.firestore.FieldValue.serverTimestamp(),
+          dateExpiration:expiry.toISOString()
+        });
+      }
+    }catch(err){console.warn('Firebase:',err);}
+    setTimeout(function(){
+      var payLabel=pay==='wero'?'Wero':'Carte bancaire par téléphone';
+      document.getElementById('gc-confirm-recap').innerHTML=
+        '🎁 <strong>'+_cur.nom+'</strong><br>'+
+        '⏱ '+_cur.duree+' · <strong>'+_cur.prix+'</strong><br>'+
+        '👤 '+p+' '+n+'<br>'+'📧 <strong>'+e+'</strong><br>'+
+        '📞 '+t+'<br>'+(dest?'🎀 Pour : <strong>'+dest+'</strong><br>':'')+
+        '💳 '+payLabel;
+      document.getElementById('gc-form-panel').style.display='none';
+      document.getElementById('gc-confirm').className='gc-confirm show';
+    },900);
+  };
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')gcClose();});
+})();
+</script>
+
+</div><!-- /v-gift -->
+
+<!-- PRATICIEN -->
   <div class="view" id="v-praticien">
     <div class="ptabs" id="ptabs"></div>
     <div class="dcard">
