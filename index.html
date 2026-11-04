@@ -859,67 +859,207 @@ footer{background:#04342C;padding:14px 20px;}
     <div class="ptabs" id="ptabs"></div>
     <div class="dcard">
       <div class="dcardtitle">📋 Mes réservations — <span id="dpname" style="color:#085041"></span></div>
-      <div�YH��\����]����]���]��\��H��\��YH��ܛKXܙY\�\�]��[OH�\�^N��ۙN�X\��[�]��Lȏ��]��\��H��\�]H��[OH�X\��[�X���N�L�ȏ���H��]�[H��\�\��][ۈܜ�[��[���]���X�[�\��H�������[��X�[���[X��\��H�YZ[�Z[�]�YH��]X܋\��[�����[X���X�[�\��H�������HH�Y[��X�[��[�]�\��H�YZ[�Z[�]�YH��]X܋[��H�X�Z�\�H���[��H��H�ς�X�[�\��H�����0�[0�\ۙO�X�[��[�]�\��H�YZ[�Z[�]�YH��]X܋][�X�Z�\�H�
-��ς�X�[�\��H������[X��H
-�[ۛ�[
-O�X�[��[�]�\��H�YZ[�Z[�]�YH��]X܋X��X�Z�\�H�^��
-H�ς�X�[�\��H�����]O�X�[��[�]�\��H�YZ[�Z[�]�\OH�]H�YH��]X܋Y]H�ς�X�[�\��H�����]\�O�X�[��[�]�\��H�YZ[�Z[�]�\OH�[YH�YH��]X܋Z]\�H��\H�N�ς�]��[OH�\�^N��^��\��X\��[�]��ȏ���]ۈ�\��H�YZ[�X����[OH��^�NȈۘ�X��H���[Y[���][[Y[��RY
-	ٛܛKXܙY\�\�]	�K��[K�\�^OIۛۙIȏ�[��[\�؝]ۏ���]ۈ�\��H�YZ[�X���[X\�H��[OH��^�NȈYH��]X܋X���ۘ�X��H��]ܙY\��\�J
-H���!Hܰ�Y\�؝]ۏ���]���]�YH��]X܋[\�Ȉ�[OH�X\��[�]��ٛ۝\�^�N�L�ȏ��]����]����]ۈYH���XܙY\�\�]��[OH�\�^N��ۙN��Y�L	N�Y[�ΌLؘX��ܛ�[��ٙ��؛ܙ\���\�Y�QQM�N؛ܙ\�\�Y]\ΌL���܎��
-L
-Nٛ۝Y�[Z[N��[ܙ�XK�\�Y�ٛ۝\�^�N�L�ٛ۝]�ZY�����\��܎��[�\��X\��[�]��LȈۘ�X��H��]��\��ܛPܙY\��]
+      <div id="rlist"></div>
+    </div>
+    <div class="dcard" id="form-creer-prat" style="display:none;margin-top:10px;">
+      <div class="dcardtitle" style="margin-bottom:12px;">➕ Nouvelle réservation hors planning</div>
+      <label class="flbl">Soin</label>
+      <select class="admin-input" id="prat-cr-soin"></select>
+      <label class="flbl">Nom du client</label>
+      <input class="admin-input" id="prat-cr-nom" placeholder="Prénom Nom"/>
+      <label class="flbl">Téléphone</label>
+      <input class="admin-input" id="prat-cr-tel" placeholder="06 XX XX XX XX"/>
+      <label class="flbl">Chambre (optionnel)</label>
+      <input class="admin-input" id="prat-cr-ch" placeholder="Ex : 205"/>
+      <label class="flbl">Date</label>
+      <input class="admin-input" type="date" id="prat-cr-date"/>
+      <label class="flbl">Heure</label>
+      <input class="admin-input" type="time" id="prat-cr-heure" step="1800"/>
+      <div style="display:flex;gap:8px;margin-top:8px;">
+        <button class="admin-btn" style="flex:1;" onclick="document.getElementById('form-creer-prat').style.display='none'">Annuler</button>
+        <button class="admin-btn primary" style="flex:1;" id="prat-cr-btn" onclick="pratCreerResa()">✅ Créer</button>
+      </div>
+      <div id="prat-cr-msg" style="margin-top:8px;font-size:12px;"></div>
+    </div>
+    <button id="btn-creer-prat" style="display:none;width:100%;padding:10px;background:#fff;border:2px dashed #1D9E75;border-radius:10px;color:#085041;font-family:Georgia,serif;font-size:13px;font-weight:700;cursor:pointer;margin-top:10px;" onclick="ouvrirFormCreerPrat()">+ Créer une réservation hors planning</button>
+  </div>
+</div>
 
-H���ܰ�Y\�[�H��\�\��][ۈܜ�[��[��؝]ۏ���]����]����KKH��T�T��USӈԔ�S��S��KO��]�YH�݋[X[�Y[��[OH�\�^N��ۙN���][ێ��^Y�[��]�ؘX��ܛ�[���ؘJ�MJNދZ[�^�NNNN�Y[�Ό�؛�\�^�[�Θ�ܙ\�X��ȏ��]��[OH��X��ܛ�[��ٙ��؛ܙ\�\�Y]\ΌM�Y[�Ό���X^]�Y�͌�X\��[��]]�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�ȏ��]��[OH��۝\�^�N�M\ٛ۝]�ZY������܎��
-L
-N�X\��[�X���N�Mȏ����\�\��][ۈܜ�[��[���]���]��[OH�X\��[�X���N�ȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ���HH�Y[��X�[�[�]YH�K[��H��[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȈX�Z�\�H�^�X\��H[X\ȋϏ�]���]��[OH�X\��[�X���N�ȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ�0�[0�\ۙO�X�[�[�]YH�K][��[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȈX�Z�\�H�
-��Ϗ�]���]��[OH�X\��[�X���N�ȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ��[X��H
-�[ۛ�[
-O�X�[�[�]YH�KX���[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȈX�Z�\�H�^��
-H�Ϗ�]���]��[OH�X\��[�X���N�ȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ���[��X�[��[X�YH�K\��[���[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȏ���[X���]���]��[OH�\�^N��^��\��X\��[�X���N�ȏ��]��[OH��^�Nȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ�]O�X�[�[�]YH�KY]H�\OH�]H��[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȋϏ�]���]��[OH��^�Nȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ�]\�O�X�[�[�]YH�KZ]\�H�\OH�[YH��[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȋϏ�]����]���]��[OH�\�^N��^��\��X\��[�]��Mȏ���]ۈۘ�X��H���[Y[���][[Y[��RY
-	�݋[X[�Y[	�K��[K�\�^OIۛۙIȈ�[OH��^�N�Y[�ΌL؛ܙ\�����Y�؛ܙ\�\�Y]\ΎؘX��ܛ�[��ٙ��ٛ۝Y�[Z[N��[ܙ�XK�\�Y�ٛ۝\�^�N�L���\��܎��[�\�ȏ�[��[\�؝]ۏ���]ۈۘ�X��H�[��Y�\��\�X[�Y[
+<!-- RÉSERVATION HORS PLANNING -->
+<div id="ov-manuel" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;padding:20px;box-sizing:border-box;">
+  <div style="background:#fff;border-radius:14px;padding:22px;max-width:360px;margin:40px auto;font-family:Georgia,serif;">
+    <div style="font-size:15px;font-weight:700;color:#085041;margin-bottom:14px;">+ Réservation hors planning</div>
+    <div style="margin-bottom:8px;"><label style="font-size:11px;font-weight:700;color:#555;display:block;margin-bottom:3px;">Nom du client</label><input id="m-nom" style="width:100%;padding:8px;border:2px solid #ddd;border-radius:7px;font-size:13px;font-family:Georgia,serif;box-sizing:border-box;" placeholder="Ex : Marny Dumas"/></div>
+    <div style="margin-bottom:8px;"><label style="font-size:11px;font-weight:700;color:#555;display:block;margin-bottom:3px;">Téléphone</label><input id="m-tel" style="width:100%;padding:8px;border:2px solid #ddd;border-radius:7px;font-size:13px;font-family:Georgia,serif;box-sizing:border-box;" placeholder="06 XX XX XX XX"/></div>
+    <div style="margin-bottom:8px;"><label style="font-size:11px;font-weight:700;color:#555;display:block;margin-bottom:3px;">Chambre (optionnel)</label><input id="m-ch" style="width:100%;padding:8px;border:2px solid #ddd;border-radius:7px;font-size:13px;font-family:Georgia,serif;box-sizing:border-box;" placeholder="Ex : 205"/></div>
+    <div style="margin-bottom:8px;"><label style="font-size:11px;font-weight:700;color:#555;display:block;margin-bottom:3px;">Soin</label><select id="m-soin" style="width:100%;padding:8px;border:2px solid #ddd;border-radius:7px;font-size:12px;font-family:Georgia,serif;box-sizing:border-box;"></select></div>
+    <div style="display:flex;gap:8px;margin-bottom:8px;">
+      <div style="flex:1;"><label style="font-size:11px;font-weight:700;color:#555;display:block;margin-bottom:3px;">Date</label><input id="m-date" type="date" style="width:100%;padding:8px;border:2px solid #ddd;border-radius:7px;font-size:13px;font-family:Georgia,serif;box-sizing:border-box;"/></div>
+      <div style="flex:1;"><label style="font-size:11px;font-weight:700;color:#555;display:block;margin-bottom:3px;">Heure</label><input id="m-heure" type="time" style="width:100%;padding:8px;border:2px solid #ddd;border-radius:7px;font-size:13px;font-family:Georgia,serif;box-sizing:border-box;"/></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:14px;">
+      <button onclick="document.getElementById('ov-manuel').style.display='none'" style="flex:1;padding:10px;border:2px solid #ddd;border-radius:8px;background:#fff;font-family:Georgia,serif;font-size:13px;cursor:pointer;">Annuler</button>
+      <button onclick="enregistrerManuel()" style="flex:1;padding:10px;border:none;border-radius:8px;background:#085041;color:#fff;font-family:Georgia,serif;font-size:13px;font-weight:700;cursor:pointer;">✅ Créer</button>
+    </div>
 
-H��[OH��^�N�Y[�ΌL؛ܙ\���ۙN؛ܙ\�\�Y]\ΎؘX��ܛ�[���
-L
-N���܎�ٙ��ٛ۝Y�[Z[N��[ܙ�XK�\�Y�ٛ۝\�^�N�L�ٛ۝]�ZY�����\��܎��[�\�ȏ��!Hܰ�Y\�؝]ۏ���]�����]����]�������\���]��\��H����\�[[�H���H������H[��]]0���ݛ�[�X\��]�P[��]�]���]��\��H����\�[[�H��'��H
-�]�[�YH	�\�YۙH8�%
-�
-�[��]0��0�[�
-H
-NH
-N
-L
-L�]���]��[OH�\�^N��^ڝ\�Y�KX�۝[���X�KX�]�Y[��[YۋZ][\Θ�[�\��X\��[�]���ȏ��H�Y�H�΋����˚�[�X��X�\�]YK���H�\��]H�؛[�Ȉ�\��H����\�[[�ȏ�'����˚�[�X��X�\�]YK���O�O���[�ۘ�X��H��[�[�	��]X�Y[��H��[OH��\��܎��[�\���X�]N���Nٛ۝\�^�N�M��Y[�΍Ȉ]OH���'�$���[����]���ٛ��\����KKHS�ՑT�VHKO��]��\��H�[�[ݙ\�^H�YH�[�[ݙ\�^H��[OH�\�^N��ۙNȏ��]��\��H�[�X�����]��\��H�[�]]H�YH�[�]]H��\�X�H��X�\�\��O�]���]��\��H�[�\�X��YH�[�\�X���[��^����H��HS��]���]��\��H�[�Y�ȈYH�[�Y�ȏ��]��\��H�[�Y��YH����]���]��\��H�[�Y��YH�H���]���]��\��H�[�Y��YH�����]���]��\��H�[�Y��YH�ȏ��]���]��\��H�[�Y��YH�
-���]���]��\��H�[�Y��YH�
-H���]����]���]��\��H�[�\Y����]ۈ�\��H�[�X���ۘ�X��H�[��^J	�I�H��O؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	̉�H���؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	���H���؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	�	�H��؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	�I�H��O؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	͉�H���؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	���H���؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	�	�H��؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	�I�H��O؝]ۏ���]ۈ�\��H�[�X��[�Y[�ۘ�X��H�[�[
+  </div>
+</div>
 
-H���*�؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	�	�H��؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��X\�
-H��[OH��۝\�^�N�L\���܎��ȏ�Y��X�\�؝]ۏ���]���]��\��H�[�Y\���YH�[�Y\�����]���]��\��H�[�X�[��[�ۘ�X��H����T[�ݙ\�^J
-H��[��[\��]����]����]����KKHQRS�S�SKO��]��\��H�[�[ݙ\�^H�YH�YZ[�[ݙ\�^H��[OH�\�^N��ۙNȏ��]��\��H�[�X����[OH��Y�M���X^]�Y�L��X^ZZY����ݙ\����^N�]]��^X[Yێ�Y�ȏ��]��[OH�\�^N��^ڝ\�Y�KX�۝[���X�KX�]�Y[��[YۋZ][\Θ�[�\��X\��[�X���N�Mȏ��]��\��H�[�]]H��[OH�X\��[�X���N�ȏ���{�#�YZ[�\��][ۈ���O�]����[�ۘ�X��H����PYZ[�
-H��[OH��\��܎��[�\�ٛ۝\�^�N�����܎��ȏ��%O��[����]����]��\��H�YZ[�]�\�����8�.{�#�\�[�Y�X�][ۜ��۝\\]p�Y\�[[p�YX][Y[��\��]HY�K��\�]I�[\���Y[��\�X�\�\��\�\��Y[��^ܝ^�H�X�Y\�Z\�0���\�[��\�HY�H]0�[0�]�\��^�[H�\��]X�0�HX�HH	�X�Y[���]����]��\��H�YZ[�]X�ȏ���]ۈ�\��H�]X�ۈ�YH�]X�\�]�ۘ�X��H����YZ[�X�	��]	�H��'�i�]X�Y[��؝]ۏ���]ۈ�\��H�]X��YH�]X�\��[��ۘ�X��H����YZ[�X�	���[��H��'䭈\�Y��؝]ۏ���]ۈ�\��H�]X��YH�]X�Z[��Ȉۘ�X��H����YZ[�X�	�[����H��'��H��ܙۛ��Y\�؝]ۏ���]ۈ�\��H�]X��YH�]X�\�\�H�ۘ�X��H����YZ[�X�	ܙ\�I�H��'��H��\�\��][ۜ�؝]ۏ���]ۈ�\��H�]X��YH�]X�XܙY\��ۘ�X��H����YZ[�X�	�ܙY\��H����Hܰ�Y\�؝]ۏ���]ۈ�\��H�]X��YH�]X�X]�\Ȉۘ�X��H����YZ[�X�	�]�\��H���d]�\�؝]ۏ���]����KKH�UP�QS��KO��]��\��H�YZ[�\�X�[ۈۈ�YH�YK\�]���]��\��H�YZ[�X�\��YH�YK\�][\����]���]��\��H�YZ[�XYY�ܛH���]��[OH��۝\�^�N�L�ٛ۝]�ZY������܎��
-L
-N�X\��[�X���N�ȏ���HZ��]\�[�[�\��[�[��]���[�]�\��H�YZ[�Z[�]�YH��[��H�X�Z�\�H���H��\]
-^��[YHX\�[�H�ς�]��\��H����Ȉ�[OH�X\��[�X���N�����[X��\��H�YZ[�Z[�]�YH��]\H��[OH�X\��[�X���N�����[ۈ�[YOH��H���]X�Y[��ۙH�O��[ۏ���[ۈ�[YOH���[ȏ���0�[�]O��[ۏ����[X����]ۈ�\��H�YZ[�X���[X\�H��[OH��Y�L	H�ۘ�X��H�Y�]X�Y[�
-H��Z��]\�؝]ۏ���]����]����]����KKHT�Q��KO��]��\��H�YZ[�\�X�[ۈ�YH�YK\��[����]��\��H�YZ[�X�\��YH�YK\��[�[\����]����]����KKH��ԑӓ��QT�KO��]��\��H�YZ[�\�X�[ۈ�YH�YKZ[��ȏ��]��\��H�YZ[�X�\����X�[�\��H�����Y�\��O�X�[��[�]�\��H�YZ[�Z[�]�YH�YKXY�\��H�ς�X�[�\��H�����0�[0�\ۙO�X�[��[�]�\��H�YZ[�Z[�]�YH�YK][�ς�X�[�\��H������]HHܛ�\H0�[Y\��X�[��[�]�\��H�YZ[�Z[�]�YH�YK\�]H�ς�X�[�\��H������]\]YH	�[��[][ۈ8�%0�[ZH
-]\�\�O�X�[��[�]�\��H�YZ[�Z[�]\�H�YH�YKY[ZH�ς�X�[�\��H�����[OH�X\��[�]���\�^N����ȏ��\��[�Y�H�X�\��H�H[��[][ۈ\�]�O�X�[��[�]�\��H�YZ[�Z[�]\�H�YH�YK\��ς��]ۈ�\��H�YZ[�X���[X\�H��[OH�X\��[�]��L�ۘ�X��H��]�R[����
-H��[��Y�\��\��\���ܙۛ��Y\�؝]ۏ���]����]����KKH��T�T��USӔ�KO��]��\��H�YZ[�\�X�[ۈ�YH�YK\�\�H���]��\��H�YZ[�X�\����]��[OH��۝\�^�N�L����܎��MMN�[�KZZY��K���X\��[�X���N�Lȏ�[�[�]YH\�X�[ۋ��\��]�^��ۜ�[\�][��[\���[\ܝH]Y[H��\�\��][ۋ0��][�Y[��[���ۙ][ۈH0�[ZH
-�۝�Z\�[Y[�]^�Y[��]ZH�۝��[Z\�0�H���H\��
-K��]���X�[�\��H������[�\�\�]O�X�[��[�]�\��H�YZ[�Z[�]�\OH�]H�YH�YK\�\�KY]H�ۘ�[��OH��[�\�YZ[��\�J
-H�ς�X�[�\��H������[�\�\��]X�Y[��X�[���[X��\��H�YZ[�Z[�]�YH�YK\�\�K\�]�ۘ�[��OH��[�\�YZ[��\�J
-H����[ۈ�[YOH����\�\��]X�Y[����[ۏ����[X����]ۈ�\��H�YZ[�X����[OH�X\��[�X���N�L�ۘ�X��H�[
-	�YK\�\�KY]I�K��[YOI���[
-	�YK\�\�K\�]	�K��[YOI��ܙ[�\�YZ[��\�J
-Nȏ���Z[�]X[\�\�\��[�\�؝]ۏ���]ۈ�\��H�YZ[�X����[OH�X\��[�X���N�LؘX��ܛ�[��͐�
-��N���܎�ٙ��Ȉۘ�X��H�[
-	�YK\�\�K\�]	�K��[YOỈ�ܙ[�\�YZ[��\�J
-Nȏ�'���\�ܚ\]YH��\�[H
-�Z[8�$�[���
-O؝]ۏ��]�YH�YK\�\�K[\���[OH�\�^N�ܚY��\�ȏ��]����]����]����KKH԰�QT�S�H��T�T��USӈKO��]��\��H�YZ[�\�X�[ۈ�YH�YKXܙY\����]��\��H�YZ[�X�\����]��[OH��۝\�^�N�L����܎��MMN�X\��[�X���N�L�ȏ�ܰ�Y^�\�X�[Y[�[�H��\�\��][ۈ�\�[��Y[�0��][�Y[��[���۝�Z[�HH[��[�ˏ�]���X�[�\��H������]X�Y[��ۙO�X�[���[X��\��H�YZ[�Z[�]�YH�܋\�]����[X���X�[�\��H�������[��X�[���[X��\��H�YZ[�Z[�]�YH�܋\��[�����[X���X�[�\��H�������HH�Y[��X�[��[�]�\��H�YZ[�Z[�]�YH�܋[��H�X�Z�\�H���[��H��H�ς�X�[�\��H�����0�[0�\ۙO�X�[��[�]�\��H�YZ[�Z[�]�YH�܋][�X�Z�\�H�
-��ς�X�[�\��H������[X��H
-�[ۛ�[
-O�X�[��[�]�\��H�YZ[�Z[�]�YH�܋X��X�Z�\�H�^��
-H�ς�X�[�\��H�����]O�X�[��[�]�\��H�YZ[�Z[�]�\OH�]H�YH�܋Y]H�ς�X�[�\��H�����]\�O�X�[��[�]�\��H�YZ[�Z[�]�\OH�[YH�YH�܋Z]\�H��\H�N�ς��]ۈ�\��H�YZ[�X���[X\�H��[OH��Y�L	N�X\��[�]��ȈYH�܋X���ۘ�X��H�ܙY\��\�PYZ[�
-H���!Hܰ�Y\�H��\�\��][ۏ؝]ۏ��]�YH�܋[\�Ȉ�[OH�X\��[�]��Lٛ۝\�^�N�L�ȏ��]����]����]����KKH�P�SӈU�T�QRS�KO��]��\��H�YZ[�\�X�[ۈ�YH�YKX]�\ȏ��]��\��H�YZ[�X�\����]��[OH��۝\�^�N�L����܎��MMN�X\��[�X���N�L�ȏ���\ۙ^�]^]�\��Y[�ˈH��\ۜ�H��Y��X�HX�\]Y[Y[���\�	�]�\ˏ�]���]�YH�YKX]�\�[\����]����]����]���]��\��H�YZ[�Y^ܝX�����]��\��H���'䯈^ܝ\�H�]HZ\�0���\��]���]��\��H�ȏ�0�[0�X�\��^�H�X�Y\�Z\�0�[0�]�\��^�[H�\��]X�0�HX�HH	�X�Y[�\�X�Y\�����[��[Y[�ˏ�]����]ۈ�\��H�YZ[�X���[X\�H�ۘ�X��H�^ܝ�]J
-H��0�[0�X�\��\�[�^�[Z\�0���\�؝]ۏ���]����]����]���
+<footer>
+  <div class="footer-line">© 2026 O'SPA Institut · Novotel Biarritz-Anglet</div>
+  <div class="footer-line">📍 68 avenue d'Espagne — 64600 Anglet · Tél. 05 59 58 50 50</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
+    <a href="https://www.hotels-cotebasque.com" target="_blank" class="footer-link">🏨 www.hotels-cotebasque.com</a>
+    <span onclick="openPin('praticien')" style="cursor:pointer;opacity:.25;font-size:16px;padding:4px 8px;" title="">🔒</span>
+  </div>
+</footer>
+
+<!-- PIN OVERLAY -->
+<div class="pin-overlay" id="pin-overlay" style="display:none;">
+  <div class="pin-box">
+    <div class="pin-title" id="pin-title">Espace sécurisé</div>
+    <div class="pin-sub" id="pin-sub">Entrez votre code PIN</div>
+    <div class="pin-dots" id="pin-dots">
+      <div class="pin-dot" id="pd0"></div>
+      <div class="pin-dot" id="pd1"></div>
+      <div class="pin-dot" id="pd2"></div>
+      <div class="pin-dot" id="pd3"></div>
+      <div class="pin-dot" id="pd4"></div>
+      <div class="pin-dot" id="pd5"></div>
+    </div>
+    <div class="pin-pad">
+      <button class="pin-btn" onclick="pinKey('1')">1</button>
+      <button class="pin-btn" onclick="pinKey('2')">2</button>
+      <button class="pin-btn" onclick="pinKey('3')">3</button>
+      <button class="pin-btn" onclick="pinKey('4')">4</button>
+      <button class="pin-btn" onclick="pinKey('5')">5</button>
+      <button class="pin-btn" onclick="pinKey('6')">6</button>
+      <button class="pin-btn" onclick="pinKey('7')">7</button>
+      <button class="pin-btn" onclick="pinKey('8')">8</button>
+      <button class="pin-btn" onclick="pinKey('9')">9</button>
+      <button class="pin-btn pin-del" onclick="pinDel()">⌫</button>
+      <button class="pin-btn" onclick="pinKey('0')">0</button>
+      <button class="pin-btn" onclick="pinClear()" style="font-size:11px;color:#888;">Effacer</button>
+    </div>
+    <div class="pin-err" id="pin-err"></div>
+    <div class="pin-cancel" onclick="closePinOverlay()">Annuler</div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="pin-overlay" id="admin-overlay" style="display:none;">
+  <div class="pin-box" style="width:94vw;max-width:520px;max-height:88vh;overflow-y:auto;text-align:left;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <div class="pin-title" style="margin-bottom:0;">⚙️ Administration O'SPA</div>
+      <span onclick="closeAdmin()" style="cursor:pointer;font-size:20px;color:#888;">✕</span>
+    </div>
+
+    <div class="admin-warn">
+      ℹ️ Les modifications sont appliquées immédiatement sur cette page. Pour qu'elles soient visibles par tous les clients, exportez le fichier mis à jour en bas de page et téléversez-le sur GitHub à la place de l'actuel.
+    </div>
+
+    <div class="admin-tabs">
+      <button class="atab on" id="atab-prat" onclick="showAdminTab('prat')">👤 Praticiens</button>
+      <button class="atab" id="atab-soin" onclick="showAdminTab('soin')">💶 Tarifs</button>
+      <button class="atab" id="atab-info" onclick="showAdminTab('info')">📍 Coordonnées</button>
+      <button class="atab" id="atab-resa" onclick="showAdminTab('resa')">📅 Réservations</button>
+      <button class="atab" id="atab-creer" onclick="showAdminTab('creer')">➕ Créer</button>
+      <button class="atab" id="atab-avis" onclick="showAdminTab('avis')">⭐ Avis</button>
+    </div>
+
+    <!-- PRATICIENS -->
+    <div class="admin-section on" id="adm-prat">
+      <div class="admin-card" id="adm-prat-list"></div>
+      <div class="admin-add-form">
+        <div style="font-size:12px;font-weight:700;color:#085041;margin-bottom:8px;">➕ Ajouter un intervenant</div>
+        <input class="admin-input" id="np-nom" placeholder="Nom complet (ex. Julie Martin)"/>
+        <div class="frow" style="margin-bottom:0">
+          <select class="admin-input" id="np-type" style="margin-bottom:0">
+            <option value="spa">Praticien·ne spa</option>
+            <option value="osteo">Ostéopathe</option>
+          </select>
+          <button class="admin-btn primary" style="width:100%" onclick="addPraticien()">Ajouter</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TARIFS -->
+    <div class="admin-section" id="adm-soin">
+      <div class="admin-card" id="adm-soin-list"></div>
+    </div>
+
+    <!-- COORDONNÉES -->
+    <div class="admin-section" id="adm-info">
+      <div class="admin-card">
+        <label class="flbl">Adresse</label>
+        <input class="admin-input" id="adm-adresse" />
+        <label class="flbl">Téléphone</label>
+        <input class="admin-input" id="adm-tel" />
+        <label class="flbl">Site du groupe hôtelier</label>
+        <input class="admin-input" id="adm-site" />
+        <label class="flbl">Politique d'annulation — délai (heures)</label>
+        <input class="admin-input-sm" id="adm-delai" />
+        <label class="flbl" style="margin-top:8px;display:block">Pourcentage facturé si annulation tardive</label>
+        <input class="admin-input-sm" id="adm-pct" />
+        <button class="admin-btn primary" style="margin-top:10px" onclick="saveInfos()">Enregistrer ces coordonnées</button>
+      </div>
+    </div>
+
+    <!-- RÉSERVATIONS -->
+    <div class="admin-section" id="adm-resa">
+      <div class="admin-card">
+        <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">En tant que direction, vous pouvez consulter et annuler n'importe quelle réservation, à tout moment, sans condition de délai (contrairement aux clients qui sont soumis à la règle des 24h).</div>
+        <label class="flbl">Filtrer par date</label>
+        <input class="admin-input" type="date" id="adm-resa-date" onchange="renderAdminResa()"/>
+        <label class="flbl">Filtrer par praticien</label>
+        <select class="admin-input" id="adm-resa-prat" onchange="renderAdminResa()">
+          <option value="">Tous les praticiens</option>
+        </select>
+        <button class="admin-btn" style="margin-bottom:10px" onclick="el('adm-resa-date').value='';el('adm-resa-prat').value='';renderAdminResa();">Réinitialiser les filtres</button>
+        <button class="admin-btn" style="margin-bottom:10px;background:#6B46C1;color:#fff;" onclick="el('adm-resa-prat').value='2';renderAdminResa();">📋 Historique Christelle (juil–août)</button>
+        <div id="adm-resa-list" style="display:grid;gap:8px;"></div>
+      </div>
+    </div>
+
+    <!-- CRÉER UNE RÉSERVATION -->
+    <div class="admin-section" id="adm-creer">
+      <div class="admin-card">
+        <div style="font-size:12px;color:#555;margin-bottom:12px;">Créez directement une réservation pour un client, à tout moment, sans contrainte de planning.</div>
+        <label class="flbl">Praticien·ne</label>
+        <select class="admin-input" id="cr-prat"></select>
+        <label class="flbl">Soin</label>
+        <select class="admin-input" id="cr-soin"></select>
+        <label class="flbl">Nom du client</label>
+        <input class="admin-input" id="cr-nom" placeholder="Prénom Nom"/>
+        <label class="flbl">Téléphone</label>
+        <input class="admin-input" id="cr-tel" placeholder="06 XX XX XX XX"/>
+        <label class="flbl">Chambre (optionnel)</label>
+        <input class="admin-input" id="cr-ch" placeholder="Ex : 205"/>
+        <label class="flbl">Date</label>
+        <input class="admin-input" type="date" id="cr-date"/>
+        <label class="flbl">Heure</label>
+        <input class="admin-input" type="time" id="cr-heure" step="1800"/>
+        <button class="admin-btn primary" style="width:100%;margin-top:4px;" id="cr-btn" onclick="creerResaAdmin()">✅ Créer la réservation</button>
+        <div id="cr-msg" style="margin-top:10px;font-size:12px;"></div>
+      </div>
+    </div>
+
+    <!-- SECTION AVIS ADMIN -->
+    <div class="admin-section" id="adm-avis">
+      <div class="admin-card">
+        <div style="font-size:12px;color:#555;margin-bottom:12px;">Répondez aux avis clients. La réponse s'affiche publiquement sous l'avis.</div>
+        <div id="adm-avis-list"></div>
+      </div>
+    </div>
+    <div class="admin-export-box">
+      <div class="t">💾 Exporter le site mis à jour</div>
+      <div class="s">Téléchargez le fichier puis téléversez-le sur GitHub à la place de l'actuel pour publier vos changements.</div>
+      <button class="admin-btn primary" onclick="exportSite()">Télécharger index.html mis à jour</button>
+    </div>
+  </div>
+</div>
+
+
 
 <script>
 
