@@ -704,7 +704,222 @@ footer{background:#04342C;padding:14px 20px;}
 </div>
 </div>
 </div>
+</div><div class="gc-info-block">
+  <div class="gc-info-title">🛍️ Comment commander votre bon cadeau ?</div>
+  <div class="gc-info-lines">
+    <div>▸ Cliquez sur <strong>🎁 Commander</strong> sur le soin de votre choix</div>
+    <div>▸ Renseignez vos coordonnées et choisissez votre mode de paiement</div>
+    <div>▸ Pascale vous contacte pour finaliser le règlement (sur place ou par téléphone)</div>
+    <div>▸ <strong>Votre bon cadeau arrive automatiquement par e-mail</strong> dès le paiement confirmé</div>
+    <div>▸ <strong>La personne qui reçoit le bon : appelez Pascale</strong> au 06 72 17 49 95 pour planifier votre soin</div>
+    <div style="margin-top:5px;">📞 <a href="tel:0672174995">06 72 17 49 95</a> · 📧 <a href="mailto:pascale.fitnesscoach@free.fr">pascale.fitnesscoach@free.fr</a></div>
+  </div>
 </div>
+
+<div class="gc-footer-note">
+  🎄 Commandez avant le <strong>20 décembre</strong> pour une livraison garantie avant Noël<br>
+  Bon cadeau dématérialisé · Code unique · Valable 6 mois · Réservation par téléphone obligatoire
+</div>
+
+<!-- MODAL COMMANDE -->
+<div class="gc-overlay" id="gc-modal" onclick="if(event.target===this)gcClose()">
+  <div class="gc-sheet">
+    <div class="gc-handle"></div>
+    <div id="gc-form-panel">
+      <div class="gc-mheader">
+        <div>
+          <div class="gc-mheader-t" id="gc-modal-title">🎁 Commander un bon cadeau</div>
+          <div class="gc-mheader-s">Bon envoyé par e-mail dès paiement confirmé · Valable 6 mois</div>
+        </div>
+        <button class="gc-mclose" onclick="gcClose()">✕</button>
+      </div>
+      <div class="gc-mbody">
+        <div class="gc-recap">
+          <div class="gc-recap-soin"><span id="gc-recap-nom">—</span><small id="gc-recap-detail">—</small></div>
+          <div class="gc-recap-price" id="gc-recap-price">—</div>
+        </div>
+        <div class="gc-row">
+          <div class="gc-field"><label>Prénom *</label><input type="text" id="gc-prenom" placeholder="Marie" autocomplete="given-name"></div>
+          <div class="gc-field"><label>Nom *</label><input type="text" id="gc-nom" placeholder="Dupont" autocomplete="family-name"></div>
+        </div>
+        <div class="gc-field">
+          <label>E-mail * — votre bon cadeau vous sera envoyé ici</label>
+          <input type="email" id="gc-email" placeholder="marie.dupont@exemple.fr" autocomplete="email">
+        </div>
+        <div class="gc-field">
+          <label>Téléphone * — pour confirmer le paiement</label>
+          <input type="tel" id="gc-tel" placeholder="06 00 00 00 00" autocomplete="tel">
+        </div>
+        <div class="gc-field">
+          <label>Ce bon cadeau est destiné à… (facultatif)</label>
+          <input type="text" id="gc-dest" placeholder="ex. Sophie, Maman, Jean-Pierre…">
+        </div>
+        <div class="gc-field">
+          <label>Message personnel (facultatif)</label>
+          <textarea id="gc-msg" placeholder="ex. Joyeux Noël ! Profite bien de ce moment de détente…"></textarea>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <div class="gc-pay-lbl">Mode de paiement</div>
+          <div class="gc-pay-opts">
+            <label class="gc-pay-opt">
+              <input type="radio" name="gc-pay" value="wero" checked>
+              <div style="font-size:19px;flex-shrink:0;margin-top:1px;">💜</div>
+              <div><div class="gc-pay-opt-t">Wero</div><div class="gc-pay-opt-d">Pascale vous envoie une demande de paiement Wero sur votre téléphone.</div></div>
+            </label>
+            <label class="gc-pay-opt">
+              <input type="radio" name="gc-pay" value="cb-tel">
+              <div style="font-size:19px;flex-shrink:0;margin-top:1px;">💳</div>
+              <div><div class="gc-pay-opt-t">Carte bancaire par téléphone</div><div class="gc-pay-opt-d">Pascale vous rappelle. Vos données bancaires ne transitent jamais en ligne.</div></div>
+            </label>
+          </div>
+        </div>
+        <div class="gc-rgpd">🔒 Données utilisées uniquement pour traiter votre commande. Aucune donnée bancaire saisie en ligne. Votre bon cadeau est envoyé automatiquement par e-mail dès confirmation du paiement par Pascale. La bénéficiaire devra appeler Pascale au 06 72 17 49 95 pour planifier le soin.</div>
+        <button class="gc-submit" id="gc-submit-btn" onclick="gcSubmit()">Valider ma commande 🎁</button>
+      </div>
+    </div>
+    <div class="gc-confirm" id="gc-confirm">
+      <div style="font-size:58px;">✅</div>
+      <div class="gc-confirm-title">Commande enregistrée !</div>
+      <div class="gc-confirm-text">Pascale vous contacte pour finaliser le paiement<br>(sur place à l'institut ou par téléphone au 06 72 17 49 95).<br>Votre <strong>bon cadeau arrive par e-mail</strong> dès confirmation du règlement.<br><br>📞 <strong>La personne qui reçoit le bon cadeau doit appeler Pascale</strong><br>pour planifier son soin au 06 72 17 49 95.</div>
+      <div class="gc-confirm-recap" id="gc-confirm-recap"></div>
+      <div style="font-size:11px;color:#aaa;text-align:center;line-height:1.8;">📞 <strong>06 72 17 49 95</strong> · 📧 <strong>pascale.fitnesscoach@free.fr</strong></div>
+      <button class="gc-confirm-close" onclick="gcClose()">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var _cur={};
+  window.gcOpen=function(nom,detail,prix,duree){
+    _cur={nom:nom,detail:detail,prix:prix,duree:duree};
+    document.getElementById('gc-modal-title').textContent='🎁 '+nom;
+    document.getElementById('gc-recap-nom').textContent=nom;
+    document.getElementById('gc-recap-detail').textContent=detail;
+    document.getElementById('gc-recap-price').textContent=prix;
+    document.getElementById('gc-form-panel').style.display='';
+    var c=document.getElementById('gc-confirm');c.className='gc-confirm';
+    document.getElementById('gc-modal').classList.add('open');
+    document.body.style.overflow='hidden';
+  };
+  window.gcClose=function(){
+    document.getElementById('gc-modal').classList.remove('open');
+    document.body.style.overflow='';
+    ['gc-prenom','gc-nom','gc-email','gc-tel','gc-dest','gc-msg'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+    var r=document.querySelector('input[name="gc-pay"][value="wero"]');if(r)r.checked=true;
+    var b=document.getElementById('gc-submit-btn');if(b){b.disabled=false;b.textContent='Valider ma commande 🎁';}
+  };
+  window.gcSubmit=function(){
+    var p=document.getElementById('gc-prenom').value.trim();
+    var n=document.getElementById('gc-nom').value.trim();
+    var e=document.getElementById('gc-email').value.trim();
+    var t=document.getElementById('gc-tel').value.trim();
+    if(!p||!n||!e||!t){alert('Merci de renseigner les champs obligatoires (Prénom, Nom, E-mail, Téléphone).');return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){alert('Adresse e-mail invalide.');return;}
+    var payEl=document.querySelector('input[name="gc-pay"]:checked');
+    var pay=payEl?payEl.value:'wero';
+    var dest=document.getElementById('gc-dest').value.trim();
+    var msg=document.getElementById('gc-msg').value.trim();
+    var b=document.getElementById('gc-submit-btn');
+    b.disabled=true;b.textContent='Envoi en cours…';
+    try{
+      if(typeof db!=='undefined'&&typeof firebase!=='undefined'){
+        var code='OSPA-'+Math.random().toString(36).substr(2,4).toUpperCase();
+        var now=new Date();var expiry=new Date(now);expiry.setMonth(expiry.getMonth()+6);
+        db.collection('BON_CADEAUX').add({
+          soin:_cur.nom,detail:_cur.detail,prix:_cur.prix,duree:_cur.duree,
+          prenom:p,nom:n,email:e,telephone:t,
+          destinataire:dest,message:msg,paiement:pay,
+          code:code,statut:'en_attente',
+          dateCommande:firebase.firestore.FieldValue.serverTimestamp(),
+          dateExpiration:expiry.toISOString()
+        });
+      }
+    }catch(err){console.warn('Firebase:',err);}
+    setTimeout(function(){
+      var payLabel=pay==='wero'?'Wero':'Carte bancaire par téléphone';
+      document.getElementById('gc-confirm-recap').innerHTML=
+        '🎁 <strong>'+_cur.nom+'</strong><br>'+
+        '⏱ '+_cur.duree+' · <strong>'+_cur.prix+'</strong><br>'+
+        '👤 '+p+' '+n+'<br>'+'�� <strong>'+e+'</strong><br>'+
+        '📞 '+t+'<br>'+(dest?'🎀 Pour : <strong>'+dest+"</strong><br>':'')+
+        '💳 '+payLabel;
+      document.getElementById('gc-form-panel').style.display='none';
+      document.getElementById('gc-confirm').className='gc-confirm show';
+    },900);
+  };
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')gcClose();});
+})();
+</script>
+
+</div><!-- /v-gift -->
+
+<!-- PRATICIEN -->
+  <div class="view" id="v-praticien">
+    <div class="ptabs" id="ptabs"></div>
+    <div class="dcard">
+      <div class="dcardtitle">📋 Mes réservations — <span id="dpname" style="color:#085041"></span></div>
+      <div�YH��\����]����]���]��\��H��\��YH��ܛKXܙY\�\�]��[OH�\�^N��ۙN�X\��[�]��Lȏ��]��\��H��\�]H��[OH�X\��[�X���N�L�ȏ���H��]�[H��\�\��][ۈܜ�[��[���]���X�[�\��H�������[��X�[���[X��\��H�YZ[�Z[�]�YH��]X܋\��[�����[X���X�[�\��H�������HH�Y[��X�[��[�]�\��H�YZ[�Z[�]�YH��]X܋[��H�X�Z�\�H���[��H��H�ς�X�[�\��H�����0�[0�\ۙO�X�[��[�]�\��H�YZ[�Z[�]�YH��]X܋][�X�Z�\�H�
+��ς�X�[�\��H������[X��H
+�[ۛ�[
+O�X�[��[�]�\��H�YZ[�Z[�]�YH��]X܋X��X�Z�\�H�^��
+H�ς�X�[�\��H�����]O�X�[��[�]�\��H�YZ[�Z[�]�\OH�]H�YH��]X܋Y]H�ς�X�[�\��H�����]\�O�X�[��[�]�\��H�YZ[�Z[�]�\OH�[YH�YH��]X܋Z]\�H��\H�N�ς�]��[OH�\�^N��^��\��X\��[�]��ȏ���]ۈ�\��H�YZ[�X����[OH��^�NȈۘ�X��H���[Y[���][[Y[��RY
+	ٛܛKXܙY\�\�]	�K��[K�\�^OIۛۙIȏ�[��[\�؝]ۏ���]ۈ�\��H�YZ[�X���[X\�H��[OH��^�NȈYH��]X܋X���ۘ�X��H��]ܙY\��\�J
+H���!Hܰ�Y\�؝]ۏ���]���]�YH��]X܋[\�Ȉ�[OH�X\��[�]��ٛ۝\�^�N�L�ȏ��]����]����]ۈYH���XܙY\�\�]��[OH�\�^N��ۙN��Y�L	N�Y[�ΌLؘX��ܛ�[��ٙ��؛ܙ\���\�Y�QQM�N؛ܙ\�\�Y]\ΌL���܎��
+L
+Nٛ۝Y�[Z[N��[ܙ�XK�\�Y�ٛ۝\�^�N�L�ٛ۝]�ZY�����\��܎��[�\��X\��[�]��LȈۘ�X��H��]��\��ܛPܙY\��]
+
+H���ܰ�Y\�[�H��\�\��][ۈܜ�[��[��؝]ۏ���]����]����KKH��T�T��USӈԔ�S��S��KO��]�YH�݋[X[�Y[��[OH�\�^N��ۙN���][ێ��^Y�[��]�ؘX��ܛ�[���ؘJ�MJNދZ[�^�NNNN�Y[�Ό�؛�\�^�[�Θ�ܙ\�X��ȏ��]��[OH��X��ܛ�[��ٙ��؛ܙ\�\�Y]\ΌM�Y[�Ό���X^]�Y�͌�X\��[��]]�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�ȏ��]��[OH��۝\�^�N�M\ٛ۝]�ZY������܎��
+L
+N�X\��[�X���N�Mȏ����\�\��][ۈܜ�[��[���]���]��[OH�X\��[�X���N�ȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ���HH�Y[��X�[�[�]YH�K[��H��[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȈX�Z�\�H�^�X\��H[X\ȋϏ�]���]��[OH�X\��[�X���N�ȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ�0�[0�\ۙO�X�[�[�]YH�K][��[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȈX�Z�\�H�
+��Ϗ�]���]��[OH�X\��[�X���N�ȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ��[X��H
+�[ۛ�[
+O�X�[�[�]YH�KX���[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȈX�Z�\�H�^��
+H�Ϗ�]���]��[OH�X\��[�X���N�ȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ���[��X�[��[X�YH�K\��[���[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȏ���[X���]���]��[OH�\�^N��^��\��X\��[�X���N�ȏ��]��[OH��^�Nȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ�]O�X�[�[�]YH�KY]H�\OH�]H��[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȋϏ�]���]��[OH��^�Nȏ�X�[�[OH��۝\�^�N�L\ٛ۝]�ZY������܎��MMN�\�^N������X\��[�X���N��ȏ�]\�O�X�[�[�]YH�KZ]\�H�\OH�[YH��[OH��Y�L	N�Y[�Ύ؛ܙ\�����Y�؛ܙ\�\�Y]\΍�ٛ۝\�^�N�L�ٛ۝Y�[Z[N��[ܙ�XK�\�Y�؛�\�^�[�Θ�ܙ\�X��ȋϏ�]����]���]��[OH�\�^N��^��\��X\��[�]��Mȏ���]ۈۘ�X��H���[Y[���][[Y[��RY
+	�݋[X[�Y[	�K��[K�\�^OIۛۙIȈ�[OH��^�N�Y[�ΌL؛ܙ\�����Y�؛ܙ\�\�Y]\ΎؘX��ܛ�[��ٙ��ٛ۝Y�[Z[N��[ܙ�XK�\�Y�ٛ۝\�^�N�L���\��܎��[�\�ȏ�[��[\�؝]ۏ���]ۈۘ�X��H�[��Y�\��\�X[�Y[
+
+H��[OH��^�N�Y[�ΌL؛ܙ\���ۙN؛ܙ\�\�Y]\ΎؘX��ܛ�[���
+L
+N���܎�ٙ��ٛ۝Y�[Z[N��[ܙ�XK�\�Y�ٛ۝\�^�N�L�ٛ۝]�ZY�����\��܎��[�\�ȏ��!Hܰ�Y\�؝]ۏ���]�����]����]�������\���]��\��H����\�[[�H���H������H[��]]0���ݛ�[�X\��]�P[��]�]���]��\��H����\�[[�H��'��H
+�]�[�YH	�\�YۙH8�%
+�
+�[��]0��0�[�
+H
+NH
+N
+L
+L�]���]��[OH�\�^N��^ڝ\�Y�KX�۝[���X�KX�]�Y[��[YۋZ][\Θ�[�\��X\��[�]���ȏ��H�Y�H�΋����˚�[�X��X�\�]YK���H�\��]H�؛[�Ȉ�\��H����\�[[�ȏ�'����˚�[�X��X�\�]YK���O�O���[�ۘ�X��H��[�[�	��]X�Y[��H��[OH��\��܎��[�\���X�]N���Nٛ۝\�^�N�M��Y[�΍Ȉ]OH���'�$���[����]���ٛ��\����KKHS�ՑT�VHKO��]��\��H�[�[ݙ\�^H�YH�[�[ݙ\�^H��[OH�\�^N��ۙNȏ��]��\��H�[�X�����]��\��H�[�]]H�YH�[�]]H��\�X�H��X�\�\��O�]���]��\��H�[�\�X��YH�[�\�X���[��^����H��HS��]���]��\��H�[�Y�ȈYH�[�Y�ȏ��]��\��H�[�Y��YH����]���]��\��H�[�Y��YH�H���]���]��\��H�[�Y��YH�����]���]��\��H�[�Y��YH�ȏ��]���]��\��H�[�Y��YH�
+���]���]��\��H�[�Y��YH�
+H���]����]���]��\��H�[�\Y����]ۈ�\��H�[�X���ۘ�X��H�[��^J	�I�H��O؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	̉�H���؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	���H���؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	�	�H��؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	�I�H��O؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	͉�H���؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	���H���؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	�	�H��؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	�I�H��O؝]ۏ���]ۈ�\��H�[�X��[�Y[�ۘ�X��H�[�[
+
+H���*�؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��^J	�	�H��؝]ۏ���]ۈ�\��H�[�X���ۘ�X��H�[��X\�
+H��[OH��۝\�^�N�L\���܎��ȏ�Y��X�\�؝]ۏ���]���]��\��H�[�Y\���YH�[�Y\�����]���]��\��H�[�X�[��[�ۘ�X��H����T[�ݙ\�^J
+H��[��[\��]����]����]����KKHQRS�S�SKO��]��\��H�[�[ݙ\�^H�YH�YZ[�[ݙ\�^H��[OH�\�^N��ۙNȏ��]��\��H�[�X����[OH��Y�M���X^]�Y�L��X^ZZY����ݙ\����^N�]]��^X[Yێ�Y�ȏ��]��[OH�\�^N��^ڝ\�Y�KX�۝[���X�KX�]�Y[��[YۋZ][\Θ�[�\��X\��[�X���N�Mȏ��]��\��H�[�]]H��[OH�X\��[�X���N�ȏ���{�#�YZ[�\��][ۈ���O�]����[�ۘ�X��H����PYZ[�
+H��[OH��\��܎��[�\�ٛ۝\�^�N�����܎��ȏ��%O��[����]����]��\��H�YZ[�]�\�����8�.{�#�\�[�Y�X�][ۜ��۝\\]p�Y\�[[p�YX][Y[��\��]HY�K��\�]I�[\���Y[��\�X�\�\��\�\��Y[��^ܝ^�H�X�Y\�Z\�0���\�[��\�HY�H]0�[0�]�\��^�[H�\��]X�0�HX�HH	�X�Y[���]����]��\��H�YZ[�]X�ȏ���]ۈ�\��H�]X�ۈ�YH�]X�\�]�ۘ�X��H����YZ[�X�	��]	�H��'�i�]X�Y[��؝]ۏ���]ۈ�\��H�]X��YH�]X�\��[��ۘ�X��H����YZ[�X�	���[��H��'䭈\�Y��؝]ۏ���]ۈ�\��H�]X��YH�]X�Z[��Ȉۘ�X��H����YZ[�X�	�[����H��'��H��ܙۛ��Y\�؝]ۏ���]ۈ�\��H�]X��YH�]X�\�\�H�ۘ�X��H����YZ[�X�	ܙ\�I�H��'��H��\�\��][ۜ�؝]ۏ���]ۈ�\��H�]X��YH�]X�XܙY\��ۘ�X��H����YZ[�X�	�ܙY\��H����Hܰ�Y\�؝]ۏ���]ۈ�\��H�]X��YH�]X�X]�\Ȉۘ�X��H����YZ[�X�	�]�\��H���d]�\�؝]ۏ���]����KKH�UP�QS��KO��]��\��H�YZ[�\�X�[ۈۈ�YH�YK\�]���]��\��H�YZ[�X�\��YH�YK\�][\����]���]��\��H�YZ[�XYY�ܛH���]��[OH��۝\�^�N�L�ٛ۝]�ZY������܎��
+L
+N�X\��[�X���N�ȏ���HZ��]\�[�[�\��[�[��]���[�]�\��H�YZ[�Z[�]�YH��[��H�X�Z�\�H���H��\]
+^��[YHX\�[�H�ς�]��\��H����Ȉ�[OH�X\��[�X���N�����[X��\��H�YZ[�Z[�]�YH��]\H��[OH�X\��[�X���N�����[ۈ�[YOH��H���]X�Y[��ۙH�O��[ۏ���[ۈ�[YOH���[ȏ���0�[�]O��[ۏ����[X����]ۈ�\��H�YZ[�X���[X\�H��[OH��Y�L	H�ۘ�X��H�Y�]X�Y[�
+H��Z��]\�؝]ۏ���]����]����]����KKHT�Q��KO��]��\��H�YZ[�\�X�[ۈ�YH�YK\��[����]��\��H�YZ[�X�\��YH�YK\��[�[\����]����]����KKH��ԑӓ��QT�KO��]��\��H�YZ[�\�X�[ۈ�YH�YKZ[��ȏ��]��\��H�YZ[�X�\����X�[�\��H�����Y�\��O�X�[��[�]�\��H�YZ[�Z[�]�YH�YKXY�\��H�ς�X�[�\��H�����0�[0�\ۙO�X�[��[�]�\��H�YZ[�Z[�]�YH�YK][�ς�X�[�\��H������]HHܛ�\H0�[Y\��X�[��[�]�\��H�YZ[�Z[�]�YH�YK\�]H�ς�X�[�\��H������]\]YH	�[��[][ۈ8�%0�[ZH
+]\�\�O�X�[��[�]�\��H�YZ[�Z[�]\�H�YH�YKY[ZH�ς�X�[�\��H�����[OH�X\��[�]���\�^N����ȏ��\��[�Y�H�X�\��H�H[��[][ۈ\�]�O�X�[��[�]�\��H�YZ[�Z[�]\�H�YH�YK\��ς��]ۈ�\��H�YZ[�X���[X\�H��[OH�X\��[�]��L�ۘ�X��H��]�R[����
+H��[��Y�\��\��\���ܙۛ��Y\�؝]ۏ���]����]����KKH��T�T��USӔ�KO��]��\��H�YZ[�\�X�[ۈ�YH�YK\�\�H���]��\��H�YZ[�X�\����]��[OH��۝\�^�N�L����܎��MMN�[�KZZY��K���X\��[�X���N�Lȏ�[�[�]YH\�X�[ۋ��\��]�^��ۜ�[\�][��[\���[\ܝH]Y[H��\�\��][ۋ0��][�Y[��[���ۙ][ۈH0�[ZH
+�۝�Z\�[Y[�]^�Y[��]ZH�۝��[Z\�0�H���H\��
+K��]���X�[�\��H������[�\�\�]O�X�[��[�]�\��H�YZ[�Z[�]�\OH�]H�YH�YK\�\�KY]H�ۘ�[��OH��[�\�YZ[��\�J
+H�ς�X�[�\��H������[�\�\��]X�Y[��X�[���[X��\��H�YZ[�Z[�]�YH�YK\�\�K\�]�ۘ�[��OH��[�\�YZ[��\�J
+H����[ۈ�[YOH����\�\��]X�Y[����[ۏ����[X����]ۈ�\��H�YZ[�X����[OH�X\��[�X���N�L�ۘ�X��H�[
+	�YK\�\�KY]I�K��[YOI���[
+	�YK\�\�K\�]	�K��[YOI��ܙ[�\�YZ[��\�J
+Nȏ���Z[�]X[\�\�\��[�\�؝]ۏ���]ۈ�\��H�YZ[�X����[OH�X\��[�X���N�LؘX��ܛ�[��͐�
+��N���܎�ٙ��Ȉۘ�X��H�[
+	�YK\�\�K\�]	�K��[YOỈ�ܙ[�\�YZ[��\�J
+Nȏ�'���\�ܚ\]YH��\�[H
+�Z[8�$�[���
+O؝]ۏ��]�YH�YK\�\�K[\���[OH�\�^N�ܚY��\�ȏ��]����]����]����KKH԰�QT�S�H��T�T��USӈKO��]��\��H�YZ[�\�X�[ۈ�YH�YKXܙY\����]��\��H�YZ[�X�\����]��[OH��۝\�^�N�L����܎��MMN�X\��[�X���N�L�ȏ�ܰ�Y^�\�X�[Y[�[�H��\�\��][ۈ�\�[��Y[�0��][�Y[��[���۝�Z[�HH[��[�ˏ�]���X�[�\��H������]X�Y[��ۙO�X�[���[X��\��H�YZ[�Z[�]�YH�܋\�]����[X���X�[�\��H�������[��X�[���[X��\��H�YZ[�Z[�]�YH�܋\��[�����[X���X�[�\��H�������HH�Y[��X�[��[�]�\��H�YZ[�Z[�]�YH�܋[��H�X�Z�\�H���[��H��H�ς�X�[�\��H�����0�[0�\ۙO�X�[��[�]�\��H�YZ[�Z[�]�YH�܋][�X�Z�\�H�
+��ς�X�[�\��H������[X��H
+�[ۛ�[
+O�X�[��[�]�\��H�YZ[�Z[�]�YH�܋X��X�Z�\�H�^��
+H�ς�X�[�\��H�����]O�X�[��[�]�\��H�YZ[�Z[�]�\OH�]H�YH�܋Y]H�ς�X�[�\��H�����]\�O�X�[��[�]�\��H�YZ[�Z[�]�\OH�[YH�YH�܋Z]\�H��\H�N�ς��]ۈ�\��H�YZ[�X���[X\�H��[OH��Y�L	N�X\��[�]��ȈYH�܋X���ۘ�X��H�ܙY\��\�PYZ[�
+H���!Hܰ�Y\�H��\�\��][ۏ؝]ۏ��]�YH�܋[\�Ȉ�[OH�X\��[�]��Lٛ۝\�^�N�L�ȏ��]����]����]����KKH�P�SӈU�T�QRS�KO��]��\��H�YZ[�\�X�[ۈ�YH�YKX]�\ȏ��]��\��H�YZ[�X�\����]��[OH��۝\�^�N�L����܎��MMN�X\��[�X���N�L�ȏ���\ۙ^�]^]�\��Y[�ˈH��\ۜ�H��Y��X�HX�\]Y[Y[���\�	�]�\ˏ�]���]�YH�YKX]�\�[\����]����]����]���]��\��H�YZ[�Y^ܝX�����]��\��H���'䯈^ܝ\�H�]HZ\�0���\��]���]��\��H�ȏ�0�[0�X�\��^�H�X�Y\�Z\�0�[0�]�\��^�[H�\��]X�0�HX�HH	�X�Y[�\�X�Y\�����[��[Y[�ˏ�]����]ۈ�\��H�YZ[�X���[X\�H�ۘ�X��H�^ܝ�]J
+H��0�[0�X�\��\�[�^�[Z\�0���\�؝]ۏ���]����]����]���
 
 <script>
 
