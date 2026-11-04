@@ -842,7 +842,7 @@ footer{background:#04342C;padding:14px 20px;}
         '🎁 <strong>'+_cur.nom+'</strong><br>'+
         '⏱ '+_cur.duree+' · <strong>'+_cur.prix+'</strong><br>'+
         '👤 '+p+' '+n+'<br>'+'�� <strong>'+e+'</strong><br>'+
-        '📞 '+t+'<br>'+(dest?'🎀 Pour : <strong>'+dest+"</strong><br>':'')+
+        '📞 '+t+'<br>'+(dest?'🎀 Pour : <strong>'+dest+"</strong><br>":'')+
         '💳 '+payLabel;
       document.getElementById('gc-form-panel').style.display='none';
       document.getElementById('gc-confirm').className='gc-confirm show';
