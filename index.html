@@ -836,7 +836,7 @@ footer{background:#04342C;padding:14px 20px;}
         });
       }
     }catch(err){console.warn('Firebase:',err);}
-        fetch('https://formsubmit.co/ajax/pascale.fitnesscoach@free.fr',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'Bon Cadeau O SPA - '+_cur.nom,_replyto:e,soin:_cur.nom,detail:_cur.detail,prix:_cur.prix,duree:_cur.duree,prenom:p,nom:n,email:e,telephone:t,destinataire:dest||'Non precise',message_personnel:msg||'Aucun',paiement:pay==='wero'?'Wero':'Carte bancaire par telephone'})}).catch(function(){});
+        try{var _subj=encodeURIComponent('Bon Cadeau O SPA – '+_cur.nom);var _body=encodeURIComponent('Bonjour Pascale,\n\nNouvelle commande de Bon Cadeau sur O SPA :\n\nSoin : '+_cur.nom+'\nDétail : '+_cur.detail+'\nDurée : '+_cur.duree+'\nPrix : '+_cur.prix+'\n\nClient : '+p+' '+n+'\nEmail : '+e+'\nTéléphone : '+t+'\nDestinataire : '+(dest||'Non précisé')+'\nMessage personnel : '+(msg||'Aucun')+'\nPaiement : '+(pay==='wero'?'Wero':'Carte bancaire par téléphone')+'\n\nCordialement.');window.open('mailto:pascale.fitnesscoach@free.fr?subject='+_subj+'&body='+_body);}catch(_e){}
     setTimeout(function(){
       var payLabel=pay==='wero'?'Wero':'Carte bancaire par téléphone';
       document.getElementById('gc-confirm-recap').innerHTML=
