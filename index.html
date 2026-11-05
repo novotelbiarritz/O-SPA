@@ -836,8 +836,32 @@ footer{background:#04342C;padding:14px 20px;}
         });
       }
     }catch(err){console.warn('Firebase:',err);}
-        try{var _subj=encodeURIComponent('Bon Cadeau O SPA – '+_cur.nom);var _body=encodeURIComponent('Bonjour Pascale,\n\nNouvelle commande de Bon Cadeau sur O SPA :\n\nSoin : '+_cur.nom+'\nDétail : '+_cur.detail+'\nDurée : '+_cur.duree+'\nPrix : '+_cur.prix+'\n\nClient : '+p+' '+n+'\nEmail : '+e+'\nTéléphone : '+t+'\nDestinataire : '+(dest||'Non précisé')+'\nMessage personnel : '+(msg||'Aucun')+'\nPaiement : '+(pay==='wero'?'Wero':'Carte bancaire par téléphone')+'\n\nCordialement.');window.open('mailto:pascale.fitnesscoach@free.fr?subject='+_subj+'&body='+_body);}catch(_e){}
-    setTimeout(function(){
+        try{
+          var _num='OSP-'+new Date().getFullYear()+'-'+String(Date.now()).slice(-6);
+          var _gcUrl='https://novotelbiarritz.github.io/O-SPA/bon-cadeau.html'
+            +'?num='+encodeURIComponent(_num)
+            +'&soin='+encodeURIComponent(_cur.nom)
+            +'&duree='+encodeURIComponent(_cur.duree)
+            +'&prix='+encodeURIComponent(_cur.prix)
+            +'&prenom='+encodeURIComponent(p)
+            +'&nom='+encodeURIComponent(n)
+            +'&email='+encodeURIComponent(e)
+            +'&dest='+encodeURIComponent(dest||'')
+            +'&msg='+encodeURIComponent(msg||'');
+          var _subj=encodeURIComponent('Bon Cadeau O SPA – '+_cur.nom+' – N°'+_num);
+          var _body=encodeURIComponent(
+            'Bonjour Pascale,\n\nNouvelle commande de Bon Cadeau O SPA :\n\n'
+            +'Soin : '+_cur.nom+'\nDétail : '+_cur.detail+'\nDurée : '+_cur.duree+'\nPrix : '+_cur.prix+'\n\n'
+            +'Client : '+p+' '+n+'\nEmail : '+e+'\nTéléphone : '+t+'\n'
+            +'Destinataire : '+(dest||'Non précisé')+'\nMessage : '+(msg||'Aucun')+'\n'
+            +'Paiement : '+(pay==='wero'?'Wero':'Carte bancaire par téléphone')+'\n\n'
+            +'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+            +'Une fois le paiement encaissé, ouvrez ce lien pour envoyer le bon cadeau au client :\n'
+            +_gcUrl+'\n'
+            +'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+          );
+          window.open('mailto:pascale.fitnesscoach@free.fr?subject='+_subj+'&body='+_body);
+        }catch(_e){}    setTimeout(function(){
       var payLabel=pay==='wero'?'Wero':'Carte bancaire par téléphone';
       document.getElementById('gc-confirm-recap').innerHTML=
         '🎁 <strong>'+_cur.nom+'</strong><br>'+
