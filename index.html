@@ -1552,7 +1552,7 @@ var NOEL_FIN=new Date(2027,0,3,23,59,59); // 31 décembre 2026
 var FERM_DEB=new Date(2026,9,27); // 27 octobre 2026
 function isOuvert(d){
   if(d<FERM_DEB) return true; // avant fermeture → ouvert
-  if(d>=NOEL_DEB && d<=NOEL_FIN) return true; // vacances Noël → ouvert
+  if(d>=NOEL_DEB && d<=NOEL_FIN && !(d.getMonth()===10&&d.getDate()===11)) return true; // vacances Noël → ouvert (sauf jours fériés) // vacances Noël → ouvert
   return false; // sinon fermé
 }
 var curStep=1,selPrat=null,selPrat2=null,selSoin=null,selSlot=null,ct='hotel',wOff=0;
