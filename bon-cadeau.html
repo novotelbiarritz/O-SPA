@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bon Cadeau O’SPA – Novotel Biarritz Anglet</title>
+<title>Bon Cadeau O'SPA â Novotel Biarritz Anglet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700&display=swap">
 <style>
-  :root{--gold:#C9A84C;--gold2:#F0D080;--green:#1B4332;--green2:#2D6A4F;--white:#FAFAF5;}
+  :root{--gold:#C9A84C;--gold2:#F0D080;--green:#1B4332;--green2:#2D6A4F;}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:#1a1a1a;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px 16px 40px;font-family:'Lato',sans-serif;}
 
-  /* ---- ACTIONS BAR (hors impression) ---- */
+  /* ---- ACTIONS ---- */
   .actions{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;border:none;text-decoration:none;transition:opacity .2s;}
   .btn-send{background:var(--green2);color:#fff;}
@@ -31,49 +31,100 @@
   .logo-hotel{color:#ccc;font-size:clamp(7px,1.2vw,10px);letter-spacing:.18em;text-transform:uppercase;}
   .num-block{background:rgba(255,255,255,.12);border:1px solid var(--gold);border-radius:20px;padding:6px 14px;white-space:nowrap;font-size:clamp(9px,1.5vw,12px);color:var(--gold2);font-family:'Cinzel',serif;letter-spacing:.05em;}
 
-  /* Separateur doré */
+  /* Separateur */
   .sep{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px 28px 0;}
 
   /* Titre principal */
   .card-title-block{text-align:center;padding:16px 28px 4px;}
   .card-title{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(28px,5vw,46px);font-weight:700;letter-spacing:.06em;line-height:1;text-shadow:0 2px 8px rgba(0,0,0,.4);}
   .card-subtitle{color:var(--gold2);font-size:clamp(9px,1.6vw,12px);letter-spacing:.22em;text-transform:uppercase;margin-top:6px;font-weight:300;}
-
-  /* Icone feuille */
   .leaf{text-align:center;font-size:18px;color:var(--gold);margin:8px 0;}
 
-  /* Zone image + champs */
-  .card-body{display:flex;gap:0;min-height:220px;}
-  .card-img{width:38%;background:#0f2e1e;position:relative;overflow:hidden;flex-shrink:0;}
-  .card-img img{width:100%;height:100%;object-fit:cover;opacity:.85;}
-  .card-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--green));pointer-events:none;}
-  .card-fields{flex:1;padding:18px 24px 18px 20px;display:flex;flex-direction:column;justify-content:center;gap:10px;}
-  .field-row{display:flex;flex-direction:column;gap:2px;}
-  .field-label{color:var(--gold);font-size:clamp(9px,1.5vw,11px);letter-spacing:.2em;text-transform:uppercase;font-weight:700;}
-  .field-value{color:#fff;font-size:clamp(12px,2vw,15px);border-bottom:1px dotted rgba(201,168,76,.4);padding-bottom:4px;min-height:22px;font-weight:300;letter-spacing:.03em;}
-  .field-value.empty{color:rgba(255,255,255,.3);font-style:italic;}
+  /* ---- HERO SOIN ---- */
+  .hero-soin{
+    text-align:center;
+    padding:18px 24px 14px;
+    background:linear-gradient(180deg,rgba(0,0,0,.2),transparent);
+    border-bottom:1px solid rgba(201,168,76,.12);
+  }
+  .hero-label{
+    color:var(--gold2);font-size:clamp(8px,1.4vw,11px);
+    letter-spacing:.28em;text-transform:uppercase;font-weight:700;margin-bottom:8px;
+  }
+  .hero-name{
+    font-family:'Cinzel',serif;color:var(--gold);
+    font-size:clamp(28px,7vw,52px);font-weight:900;
+    letter-spacing:.08em;line-height:1;
+    text-shadow:0 0 50px rgba(201,168,76,.4);
+  }
+  .hero-duree{color:#fff;font-size:clamp(13px,2.5vw,18px);font-weight:300;margin-top:10px;}
+  .hero-tags{color:var(--gold2);font-size:clamp(9px,1.5vw,11px);letter-spacing:.18em;text-transform:uppercase;margin-top:6px;opacity:.8;}
 
-  /* Validité */
-  .validity-band{background:linear-gradient(135deg,rgba(0,0,0,.3),rgba(0,0,0,.1));margin:0 24px;border-radius:40px;text-align:center;padding:10px 20px;border:1.5px solid var(--gold);}
+  /* ---- DESTINATAIRE ---- */
+  .recipient-block{margin:16px 24px 0;}
+  .rec-row{display:flex;align-items:baseline;gap:12px;padding:8px 0;border-bottom:1px dotted rgba(201,168,76,.2);}
+  .rec-row:last-child{border-bottom:none;}
+  .rec-label{color:var(--gold);font-size:clamp(9px,1.4vw,11px);letter-spacing:.22em;text-transform:uppercase;font-weight:700;min-width:110px;flex-shrink:0;}
+  .rec-value{color:#fff;font-size:clamp(14px,2.5vw,20px);font-weight:300;letter-spacing:.03em;}
+  .rec-value.empty{color:rgba(255,255,255,.3);font-style:italic;}
+
+  /* ---- MESSAGE DONATEUR ---- */
+  .message-block{
+    margin:16px 20px 0;
+    background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.02));
+    border:1.5px solid rgba(201,168,76,.4);
+    border-radius:12px;padding:16px 20px;
+  }
+  .message-block.hidden{display:none;}
+  .message-label{
+    color:var(--gold);font-size:clamp(8px,1.3vw,10px);
+    letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+    margin-bottom:10px;display:flex;align-items:center;gap:8px;
+  }
+  .message-label::before{content:'â';font-size:14px;}
+  .message-text{
+    color:#f0e8d0;font-size:clamp(14px,2.6vw,19px);
+    font-style:italic;font-weight:300;line-height:1.6;
+  }
+  .message-text::before{content:'\201C';color:var(--gold);font-size:1.5em;line-height:0;vertical-align:-.25em;margin-right:2px;}
+  .message-text::after{content:'\201D';color:var(--gold);font-size:1.5em;line-height:0;vertical-align:-.25em;margin-left:2px;}
+
+  /* ---- VALIDITE ---- */
+  .validity-band{
+    background:linear-gradient(135deg,rgba(0,0,0,.3),rgba(0,0,0,.1));
+    margin:16px 24px 0;border-radius:40px;text-align:center;
+    padding:10px 20px;border:1.5px solid var(--gold);
+  }
   .validity-main{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(16px,3vw,24px);font-weight:700;letter-spacing:.12em;}
   .validity-sub{color:var(--gold2);font-size:clamp(8px,1.4vw,11px);letter-spacing:.18em;text-transform:uppercase;margin-top:2px;}
 
-  .sep2{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px 28px;}
+  /* ---- CTA ---- */
+  .cta-block{
+    margin:16px 20px 0;
+    background:linear-gradient(135deg,rgba(27,67,50,.8),rgba(18,46,34,.5));
+    border:1.5px solid rgba(201,168,76,.45);
+    border-radius:12px;padding:18px 20px;text-align:center;
+  }
+  .cta-title{color:var(--gold);font-family:'Cinzel',serif;font-size:clamp(11px,2.2vw,16px);font-weight:700;letter-spacing:.1em;margin-bottom:6px;}
+  .cta-text{color:#ccc;font-size:clamp(10px,1.8vw,13px);line-height:1.6;margin-bottom:12px;}
+  .cta-phone{
+    display:inline-block;background:var(--gold);color:#1a1a1a;
+    font-size:clamp(18px,4vw,28px);font-weight:700;
+    padding:10px 28px;border-radius:40px;letter-spacing:.05em;
+    text-decoration:none;cursor:pointer;
+  }
+  .cta-addr{color:#999;font-size:clamp(9px,1.5vw,11px);margin-top:10px;line-height:1.6;}
+  .cta-addr strong{color:#ccc;}
 
-  /* Footer */
-  .card-footer{background:rgba(0,0,0,.35);display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;align-items:center;padding:14px 24px;gap:0;}
-  .foot-col{text-align:center;padding:0 12px;}
-  .foot-div{width:1px;background:rgba(201,168,76,.4);height:60px;align-self:center;}
-  .foot-icon{font-size:18px;margin-bottom:4px;}
-  .foot-title{color:var(--gold);font-size:clamp(7px,1.3vw,10px);letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:4px;}
-  .foot-name{font-family:'Lato',sans-serif;color:#fff;font-size:clamp(14px,2.5vw,20px);font-style:italic;font-weight:300;}
-  .foot-phone{color:var(--gold2);font-size:clamp(10px,1.8vw,15px);font-weight:700;letter-spacing:.04em;}
-  .foot-addr{color:#ccc;font-size:clamp(7px,1.2vw,11px);line-height:1.5;}
-  .foot-addr strong{color:#fff;}
-  .foot-right{color:#ccc;font-size:clamp(7px,1.2vw,10px);line-height:1.6;}
+  /* Separateur bas */
+  .sep2{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:16px 28px 0;}
 
-  /* Pied de page coloré */
-  .card-bottom-bar{background:linear-gradient(90deg,var(--green2),#1a4a3a,var(--green2));padding:9px 24px;display:flex;align-items:center;justify-content:center;gap:16px;}
+  /* Barre basse */
+  .card-bottom-bar{
+    background:linear-gradient(90deg,var(--green2),#1a4a3a,var(--green2));
+    padding:9px 24px;display:flex;align-items:center;justify-content:center;gap:16px;
+    margin-top:14px;
+  }
   .bar-text{color:var(--gold2);font-size:clamp(7px,1.3vw,11px);letter-spacing:.15em;text-transform:uppercase;}
   .bar-sep{color:var(--gold);font-size:14px;}
 
@@ -81,21 +132,22 @@
   @media print{
     body{background:#fff;padding:0;display:block;}
     .actions,.notice{display:none!important;}
+    .cta-phone{background:var(--gold)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     .card{max-width:100%;border-radius:0;box-shadow:none;page-break-inside:avoid;}
   }
 </style>
 </head>
 <body>
 
-<div class="actions" id="actions">
-  <button class="btn btn-send" id="btnSend" onclick="sendToClient()">📧 Envoyer au client</button>
-  <button class="btn btn-dl" onclick="window.print()">⬇️ Télécharger / Imprimer PDF</button>
+<div class="actions">
+  <button class="btn btn-send" onclick="sendToClient()">ð§ Envoyer au client</button>
+  <button class="btn btn-dl" onclick="window.print()">â¬ï¸ TÃ©lÃ©charger / Imprimer PDF</button>
 </div>
-<p class="notice" id="notice">Une fois le paiement encaissé, cliquez sur <strong>« Envoyer au client »</strong> pour lui adresser son bon cadeau.</p>
+<p class="notice">Une fois le paiement encaissÃ©, cliquez sur <strong>Â« Envoyer au client Â»</strong> pour lui adresser son bon cadeau.</p>
 
 <div class="card" id="card">
 
-  <!-- En-tête -->
+  <!-- En-tÃªte -->
   <div class="card-header">
     <div style="width:60px;flex-shrink:0;"></div>
     <div class="logo-block">
@@ -103,7 +155,7 @@
       <div class="logo-sub">by Novotel</div>
       <div class="logo-hotel">Biarritz Anglet</div>
     </div>
-    <div class="num-block">Bon cadeau N°&nbsp;<span id="numVal">—</span></div>
+    <div class="num-block">Bon cadeau NÂ°&nbsp;<span id="numVal">â</span></div>
   </div>
 
   <div class="sep"></div>
@@ -111,82 +163,65 @@
   <!-- Titre -->
   <div class="card-title-block">
     <div class="card-title">BON CADEAU</div>
-    <div class="card-subtitle">Un moment pour soi · Un cadeau qui fait du bien</div>
+    <div class="card-subtitle">Un moment pour soi Â· Un cadeau qui fait du bien</div>
   </div>
-  <div class="leaf">❧</div>
+  <div class="leaf">â§</div>
 
-  <!-- Corps : photo + champs -->
-  <div class="card-body">
-    <div class="card-img">
-      <!-- fallback : dégradé vert si l'image ne charge pas -->
-      <img src="spa-photo.jpg" alt="Spa ambiance" onerror="this.style.display='none'">
-      <div class="card-img-overlay"></div>
+  <!-- HERO : soin en grand -->
+  <div class="hero-soin">
+    <div class="hero-label">Soin offert</div>
+    <div class="hero-name" id="heroName">â</div>
+    <div class="hero-duree" id="heroDuree"></div>
+    <div class="hero-tags">Massage Â· Soin Â· Bien-Ãªtre â§</div>
+  </div>
+
+  <!-- Destinataire -->
+  <div class="recipient-block">
+    <div class="rec-row">
+      <span class="rec-label">Pour</span>
+      <span class="rec-value" id="fPour">&nbsp;</span>
     </div>
-    <div class="card-fields">
-      <div class="field-row">
-        <span class="field-label">Pour</span>
-        <span class="field-value" id="fPour">&nbsp;</span>
-      </div>
-      <div class="field-row">
-        <span class="field-label">De la part de</span>
-        <span class="field-value" id="fDe">&nbsp;</span>
-      </div>
-      <div class="field-row">
-        <span class="field-label">Prestation</span>
-        <span class="field-value" id="fSoin">&nbsp;</span>
-      </div>
-      <div class="field-row">
-        <span class="field-label">Durée</span>
-        <span class="field-value" id="fDuree">&nbsp;</span>
-      </div>
-      <div class="field-row">
-        <span class="field-label">Message</span>
-        <span class="field-value" id="fMsg">&nbsp;</span>
-      </div>
+    <div class="rec-row">
+      <span class="rec-label">De la part de</span>
+      <span class="rec-value" id="fDe">&nbsp;</span>
     </div>
   </div>
 
-  <div style="height:14px;"></div>
+  <!-- Message du donateur (masquÃ© si vide) -->
+  <div class="message-block hidden" id="msgBlock">
+    <div class="message-label">Message</div>
+    <div class="message-text" id="fMsg"></div>
+  </div>
 
-  <!-- Validité -->
+  <!-- ValiditÃ© -->
   <div class="validity-band">
     <div class="validity-main">VALABLE 6 MOIS</div>
-    <div class="validity-sub">Non remboursable – Non échangeable</div>
+    <div class="validity-sub">Non remboursable â Non Ã©changeable</div>
+  </div>
+
+  <!-- CTA : appeler Pascale -->
+  <div class="cta-block">
+    <div class="cta-title">ð Pour planifier votre soin</div>
+    <div class="cta-text">Contactez votre praticienne pour convenir de la date<br>et de l'horaire qui vous conviennent.</div>
+    <a class="cta-phone" href="tel:0672174995">06 72 17 49 95</a>
+    <div class="cta-addr">
+      <strong>Pascale Â· O'SPA by Novotel</strong><br>
+      68 avenue d'Espagne Â· 64600 Anglet
+    </div>
   </div>
 
   <div class="sep2"></div>
 
-  <!-- Footer -->
-  <div class="card-footer">
-    <div class="foot-col">
-      <div class="foot-icon">📍</div>
-      <div class="foot-addr"><strong>Novotel<br>Biarritz Anglet</strong><br>68 avenue d'Espagne<br>64600 Anglet</div>
-    </div>
-    <div class="foot-div"></div>
-    <div class="foot-col">
-      <div class="foot-icon">🌿</div>
-      <div class="foot-title">Contact praticienne</div>
-      <div class="foot-name">Pascale</div>
-      <div class="foot-phone">06 72 17 49 95</div>
-    </div>
-    <div class="foot-div"></div>
-    <div class="foot-col">
-      <div class="foot-icon">📅</div>
-      <div class="foot-title">Réservez votre moment</div>
-      <div class="foot-right">Auprès de votre praticienne<br>ou sur l'appli<br><strong style="color:var(--gold2)">O'SPA Novotel<br>Biarritz Anglet</strong></div>
-    </div>
-  </div>
-
   <!-- Barre basse -->
   <div class="card-bottom-bar">
-    <span class="bar-text">❧</span>
+    <span class="bar-text">â§</span>
     <span class="bar-text">O'SPA by Novotel Biarritz Anglet</span>
     <span class="bar-sep">|</span>
-    <span class="bar-text">Soins · Massages · Bien-être</span>
-    <span class="bar-text">❧</span>
+    <span class="bar-text">Soins Â· Massages Â· Bien-Ãªtre</span>
+    <span class="bar-text">â§</span>
   </div>
 
-</div><!-- .card -->
+</div>
 
 <script>
 (function(){
@@ -200,47 +235,55 @@
   var duree = g('duree')|| '';
   var msg   = g('msg')  || '';
   var email = g('email')|| '';
-  var prix  = g('prix') || '';
 
+  /* numÃ©ro */
   document.getElementById('numVal').textContent = num;
-  set('fPour',  pour  || '…');
-  set('fDe',    de    || '…');
-  set('fSoin',  soin  || '…');
-  set('fDuree', duree || '…');
-  set('fMsg',   msg   || '…');
 
-  function set(id, val){
-    var el = document.getElementById(id);
-    el.textContent = val;
-    if(val==='…') el.classList.add('empty');
+  /* hÃ©ro soin */
+  document.getElementById('heroName').textContent = soin || 'â';
+  if(duree) document.getElementById('heroDuree').textContent = duree;
+
+  /* destinataire */
+  var pourEl = document.getElementById('fPour');
+  pourEl.textContent = pour || 'â¦';
+  if(!pour) pourEl.classList.add('empty');
+
+  var deEl = document.getElementById('fDe');
+  deEl.textContent = de || 'â¦';
+  if(!de) deEl.classList.add('empty');
+
+  /* message : affichÃ© seulement si renseignÃ© */
+  var msgBlock = document.getElementById('msgBlock');
+  if(msg && msg.trim() !== '' && msg !== 'â¦'){
+    document.getElementById('fMsg').textContent = msg;
+    msgBlock.classList.remove('hidden');
   }
 
-  // Bouton envoyer au client
+  /* envoi au client */
   window.sendToClient = function(){
     if(!email){ alert('Adresse email du client non disponible dans ce lien.'); return; }
     var pageUrl = window.location.href;
-    var subj = encodeURIComponent('🎁 Votre Bon Cadeau O\'SPA – N°'+num);
+    var subj = encodeURIComponent('ð Votre Bon Cadeau O\'SPA â NÂ°'+num);
     var body = encodeURIComponent(
       'Bonjour '+(pour||de)+',\n\n'+
-      'Suite à la commande de votre bon cadeau O\'SPA by Novotel Biarritz Anglet,\n'+
-      'je vous confirme que votre paiement a bien été enregistré.\n\n'+
-      '━━━━━━━━━━━━━━━━━━━━━━━\n'+
-      '🎁 BON CADEAU N° '+num+'\n'+
-      '━━━━━━━━━━━━━━━━━━━━━━━\n'+
-      'Prestation : '+soin+'\n'+
-      'Durée      : '+duree+'\n'+
-      (prix ? 'Montant    : '+prix+'\n' : '')+
-      (pour ? 'Pour       : '+pour+'\n' : '')+
-      (msg && msg!=='…' ? 'Message    : '+msg+'\n' : '')+
-      '━━━━━━━━━━━━━━━━━━━━━━━\n\n'+
-      'Ce bon cadeau est valable 6 mois à compter de ce jour.\n\n'+
-      '► Visualisez et imprimez votre bon cadeau en cliquant ici :\n'+pageUrl+'\n\n'+
-      'Pour prendre rendez-vous :\n'+
-      '📞 Pascale : 06 72 17 49 95\n'+
-      '📍 Novotel Biarritz Anglet, 68 avenue d\'Espagne, 64600 Anglet\n\n'+
-      'À très bientôt,\nPascale\nO\'SPA by Novotel Biarritz Anglet'
+      'Suite Ã  votre bon cadeau O\'SPA by Novotel Biarritz Anglet,\n'+
+      'nous vous confirmons que votre paiement a bien Ã©tÃ© enregistrÃ©.\n\n'+
+      'âââââââââââââââââââââââ\n'+
+      'ð BON CADEAU NÂ° '+num+'\n'+
+      'âââââââââââââââââââââââ\n'+
+      'Soin       : '+soin+'\n'+
+      (duree ? 'DurÃ©e      : '+duree+'\n' : '')+
+      (pour  ? 'Pour       : '+pour+'\n'  : '')+
+      (msg && msg!=='â¦' ? 'Message    : '+msg+'\n' : '')+
+      'âââââââââââââââââââââââ\n\n'+
+      'Ce bon cadeau est valable 6 mois Ã  compter de ce jour.\n\n'+
+      'âº Visualisez et imprimez votre bon cadeau ici :\n'+pageUrl+'\n\n'+
+      'ð Pour rÃ©server votre soin :\n'+
+      'Pascale : 06 72 17 49 95\n'+
+      'ð O\'SPA Â· Novotel Biarritz Anglet, 68 avenue d\'Espagne, 64600 Anglet\n\n'+
+      'Ã trÃ¨s bientÃ´t,\nPascale\nO\'SPA by Novotel Biarritz Anglet'
     );
-    window.open('mailto:'+encodeURIComponent(email)+'?subject='+subj+'&body='+body);
+    window.location.href = 'mailto:'+encodeURIComponent(email)+'?subject='+subj+'&body='+body;
   };
 })();
 </script>
